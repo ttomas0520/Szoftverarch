@@ -1,5 +1,4 @@
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Shapes;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -10,15 +9,20 @@ namespace Swarm {
 
         public GamePage() {
             InitializeComponent();
-            InitializeHexagons(20, 15);
+            InitializeHexagons(3, 3);
             BindingContext = this;
         }
 
         private void InitializeHexagons(int rows, int columns) {
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
-                    double x = (3.0 / 2 * j) * 100;
-                    double y = (Math.Sqrt(3) * i + (j % 2 == 1 ? Math.Sqrt(3) / 2 * 100 : 0)) * 100;
+                    double x = j * 1.5 * 100;
+                    double y = i * Math.Sqrt(3) * 100;
+
+                    // Shift odd columns downward by half a hexagon
+                    if (j % 2 == 1) {
+                        y += Math.Sqrt(3) * 50;
+                    }
 
                     Hexagons.Add(new HexagonViewModel {
                         Color = i % 2 == 0 ? "Red" : "Green",
@@ -27,29 +31,8 @@ namespace Swarm {
                     });
                 }
             }
-
-            // Dynamically add Polygon elements to the Grid
-            for (int i = 0; i < Hexagons.Count; i++) {
-                var hexagon = Hexagons[i];
-                var polygon = new Polygon {
-                    Points = new PointCollection(hexagon.HexagonPoints),
-                    Fill = Brush.Default,
-                    Stroke = Brush.Default,
-                    Aspect = Stretch.Fill,
-                    StrokeThickness = 5,
-                    HeightRequest = 100,
-                    WidthRequest = 100
-                };
-
-                polygon.GestureRecognizers.Add(new TapGestureRecognizer {
-                    Command = hexagon.TapCommand
-                });
-
-                Grid.SetRow(polygon, i / columns);
-                Grid.SetColumn(polygon, i % columns);
-                HexagonGrid.Children.Add(polygon);
-            }
         }
+
 
         private Point[] CalculateHexagonPoints(double centerX, double centerY, double radius) {
             Point[] points = new Point[6];

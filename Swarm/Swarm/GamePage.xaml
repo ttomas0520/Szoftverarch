@@ -4,6 +4,37 @@
              x:Class="Swarm.GamePage"
              Title="GamePage">
 
-    <Grid x:Name="HexagonGrid" />
+    <CollectionView ItemsSource="{Binding Hexagons}">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical"
+                         Span="3" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Polygon Points="{Binding HexagonPoints}"
+                     Fill="{Binding Color}"
+                     Stroke="Green"
+                     Aspect="Fill"
+                     StrokeThickness="5"
+                     HeightRequest="100"
+                     WidthRequest="100"
+                     Grid.Row="{Binding Row}"
+                     Grid.Column="{Binding Column}">
+                    <Polygon.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" />
+                    </Polygon.GestureRecognizers>
+                    <Polygon.Triggers>
+                        <DataTrigger TargetType="Polygon" Binding="{Binding Color}" Value="Red">
+                            <Setter Property="Fill" Value="Red" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Polygon" Binding="{Binding Color}" Value="Green">
+                            <Setter Property="Fill" Value="Green" />
+                        </DataTrigger>
+                        <!-- Add more triggers for other colors as needed -->
+                    </Polygon.Triggers>
+                </Polygon>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 
 </ContentPage>
