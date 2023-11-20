@@ -9,10 +9,9 @@ namespace Swarm.Repositories {
         private readonly IMongoCollection<Simulation> _simulations;
 
         public SimulationRepository(IOptions<DatabaseSettings> dbConfig) {
-            var client = new MongoClient(dbConfig.Value.ConnectionString);
-            var database = client.GetDatabase(dbConfig.Value.DatabaseName);
-            _simulations = database.GetCollection<Simulation>(dbConfig.Value.SimulationsCollectionName);
-
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("SwarmDb");
+            _simulations = database.GetCollection<Simulation>("Simulations");
         }
         public async Task<bool> DeleteOneAsync(string id) {
             try {

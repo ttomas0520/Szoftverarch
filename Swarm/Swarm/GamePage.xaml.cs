@@ -1,13 +1,16 @@
 using Microsoft.Maui.Controls;
+using Repositories;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Swarm {
     public partial class GamePage : ContentPage {
+        private readonly ISimulationRepository _repository;
         public ObservableCollection<HexagonViewModel> Hexagons { get; } = new ObservableCollection<HexagonViewModel>();
 
-        public GamePage() {
+        public GamePage(ISimulationRepository repository) {
+            _repository = repository;
             InitializeComponent();
             InitializeHexagons(3, 3);
             BindingContext = this;
