@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swarm", "Swarm\Swarm.csproj", "{2C0BDA7B-C1F3-4248-8D19-FD6406B02338}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwarmWPF", "SwarmWPF\SwarmWPF.csproj", "{AF6FB898-FE90-4494-92AE-E1F18001A3E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexGridHelpers", "..\hex\HexGridHelpers\HexGridHelpers.csproj", "{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexGridDemo", "..\hex\HexGridDemo\HexGridDemo.csproj", "{B04561D8-B734-4956-8779-3AA6A1479B34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexGridControl", "..\hex\HexGridControl\HexGridControl.csproj", "{942134AC-6EA2-4500-8F22-0F739B70A05F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexGridHelpers", "..\hex\HexGridHelpers\HexGridHelpers.csproj", "{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +17,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C0BDA7B-C1F3-4248-8D19-FD6406B02338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C0BDA7B-C1F3-4248-8D19-FD6406B02338}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C0BDA7B-C1F3-4248-8D19-FD6406B02338}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{2C0BDA7B-C1F3-4248-8D19-FD6406B02338}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C0BDA7B-C1F3-4248-8D19-FD6406B02338}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C0BDA7B-C1F3-4248-8D19-FD6406B02338}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AF6FB898-FE90-4494-92AE-E1F18001A3E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF6FB898-FE90-4494-92AE-E1F18001A3E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF6FB898-FE90-4494-92AE-E1F18001A3E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF6FB898-FE90-4494-92AE-E1F18001A3E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B04561D8-B734-4956-8779-3AA6A1479B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B04561D8-B734-4956-8779-3AA6A1479B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B04561D8-B734-4956-8779-3AA6A1479B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,15 +33,11 @@ Global
 		{942134AC-6EA2-4500-8F22-0F739B70A05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{942134AC-6EA2-4500-8F22-0F739B70A05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{942134AC-6EA2-4500-8F22-0F739B70A05F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E91ECA7C-4DEB-4A44-B695-FC5B9498A677}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4FD385DA-CF56-4422-9F98-93CFC488CFF6}
+		SolutionGuid = {F9C3B4F6-C66E-4E5C-8BC8-78D8062F8FD4}
 	EndGlobalSection
 EndGlobal

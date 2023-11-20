@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "SwarmWPF/1.0.0": {
+        "dependencies": {
+          "HexGridControl": "1.0.0",
+          "HexGridHelpers": "1.0.0"
+        },
+        "runtime": {
+          "SwarmWPF.dll": {}
+        }
+      },
+      "HexGridControl/1.0.0": {
+        "runtime": {
+          "HexGridControl.dll": {}
+        }
+      },
+      "HexGridHelpers/1.0.0": {
+        "runtime": {
+          "HexGridHelpers.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SwarmWPF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HexGridControl/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HexGridHelpers/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
