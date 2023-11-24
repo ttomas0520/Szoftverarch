@@ -53,11 +53,21 @@
                     Content="Start Game"
                     Click="OnStartGameClicked"
                     HorizontalAlignment="Center" />
-
             <Button
-                    Content="Load Game"
-                    Click="OnLoadGameClicked"
-                    HorizontalAlignment="Center" />
+                Content="Load Game"
+                Click="OnLoadGameClicked"
+                HorizontalAlignment="Center" />
+
+
+
+            <TextBox
+                    x:Name="GameId"
+                    KeyboardNavigation.TabNavigation="Cycle"
+                    Text="GameId"
+                    MaxWidth="200"
+                    MaxLength="24"
+                    HorizontalAlignment="Stretch"/>
+
 
             <Button
                     Content="Exit Game"

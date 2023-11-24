@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwarmWPF.Models.DatabaseModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace SwarmWPF {
     /// Interaction logic for MenuPage.xaml
     /// </summary>
     public partial class MenuPage : Page {
-        private MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
         public MenuPage(MainWindow mainWindow) {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace SwarmWPF {
 
             // Parse the values from TextBoxes and set RowCount and ColumnCount
             if (int.TryParse(BoardHeight.Text, out int rowCount) && int.TryParse(BoardWidth.Text, out int columnCount)) {
-                GamePage gamePage = new GamePage(rowCount, columnCount);
+                GamePage gamePage = new GamePage(mainWindow, rowCount, columnCount);
                 mainWindow.mainFrame.Navigate(gamePage);
             }
             else {
@@ -42,8 +43,9 @@ namespace SwarmWPF {
         }
 
         private void OnLoadGameClicked(object sender, RoutedEventArgs e) {
-            // Implement the logic for the Load Game button click
-            MessageBox.Show("Load Game button clicked!");
+            mainWindow.LoadGame(GameId.Text);
+            IDictionary<int, Simulation> loadedGame = new Dictionary<int, Simulation>();
+
         }
 
         private void OnExitGameClicked(object sender, RoutedEventArgs e) {
