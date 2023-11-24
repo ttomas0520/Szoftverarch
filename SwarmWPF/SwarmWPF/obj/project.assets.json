@@ -41,25 +41,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\axelv\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ttoma\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GITHUB\\Szoftverarch\\SwarmWPF\\SwarmWPF\\SwarmWPF.csproj",
+      "projectUniqueName": "D:\\Egyetem\\Szoftverarch\\SwarmWPF\\SwarmWPF\\SwarmWPF.csproj",
       "projectName": "SwarmWPF",
-      "projectPath": "D:\\GITHUB\\Szoftverarch\\SwarmWPF\\SwarmWPF\\SwarmWPF.csproj",
-      "packagesPath": "C:\\Users\\axelv\\.nuget\\packages\\",
-      "outputPath": "D:\\GITHUB\\Szoftverarch\\SwarmWPF\\SwarmWPF\\obj\\",
+      "projectPath": "D:\\Egyetem\\Szoftverarch\\SwarmWPF\\SwarmWPF\\SwarmWPF.csproj",
+      "packagesPath": "C:\\Users\\ttoma\\.nuget\\packages\\",
+      "outputPath": "D:\\Egyetem\\Szoftverarch\\SwarmWPF\\SwarmWPF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\axelv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ttoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0-windows"
@@ -73,11 +78,11 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "projectReferences": {
-            "D:\\GITHUB\\Szoftverarch\\hex\\HexGridControl\\HexGridControl.csproj": {
-              "projectPath": "D:\\GITHUB\\Szoftverarch\\hex\\HexGridControl\\HexGridControl.csproj"
+            "D:\\Egyetem\\Szoftverarch\\hex\\HexGridControl\\HexGridControl.csproj": {
+              "projectPath": "D:\\Egyetem\\Szoftverarch\\hex\\HexGridControl\\HexGridControl.csproj"
             },
-            "D:\\GITHUB\\Szoftverarch\\hex\\HexGridHelpers\\HexGridHelpers.csproj": {
-              "projectPath": "D:\\GITHUB\\Szoftverarch\\hex\\HexGridHelpers\\HexGridHelpers.csproj"
+            "D:\\Egyetem\\Szoftverarch\\hex\\HexGridHelpers\\HexGridHelpers.csproj": {
+              "projectPath": "D:\\Egyetem\\Szoftverarch\\hex\\HexGridHelpers\\HexGridHelpers.csproj"
             }
           }
         }
@@ -110,7 +115,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
