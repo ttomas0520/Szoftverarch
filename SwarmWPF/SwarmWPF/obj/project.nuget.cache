@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "ASImUMTaVZTqxiY65RFV8GMEazOgm1jb/g+5aLsTqRjDTeM4Mhc3hS7GKCZZXF8QqfnN1qomckGzkuWZw2DGVw==",
   "success": true,
   "projectFilePath": "D:\\GITHUB\\Szoftverarch\\SwarmWPF\\SwarmWPF\\SwarmWPF.csproj",
@@ -26,5 +27,11 @@
     "C:\\Users\\axelv\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
     "C:\\Users\\axelv\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512"
   ],
+=======
+  "dgSpecHash": "5rmSs3Z3Q+hOuG875lNFcXwGkF/tNZMfZtGM96FhBM2ihrDgdNj9qreg49IFW64R4Gjs1CdS/wgfEV+KLcak7w==",
+  "success": true,
+  "projectFilePath": "D:\\Egyetem\\Szoftverarch\\SwarmWPF\\SwarmWPF\\SwarmWPF.csproj",
+  "expectedPackageFiles": [],
+>>>>>>> create-base-hex-movement-logic
   "logs": []
 }

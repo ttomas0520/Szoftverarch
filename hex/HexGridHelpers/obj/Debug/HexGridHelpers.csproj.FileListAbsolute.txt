@@ -10,3 +10,9 @@ D:\GITHUB\Szoftverarch\hex\HexGridHelpers\obj\Debug\HexGridHelpers.dll
 D:\GITHUB\Szoftverarch\hex\HexGridHelpers\obj\Debug\HexGridHelpers.pdb
 D:\GITHUB\Szoftverarch\hex\HexGridHelpers\bin\Debug\HexGridHelpers.dll
 D:\GITHUB\Szoftverarch\hex\HexGridHelpers\bin\Debug\HexGridHelpers.pdb
+D:\Egyetem\Szoftverarch\hex\HexGridHelpers\bin\Debug\HexGridHelpers.dll
+D:\Egyetem\Szoftverarch\hex\HexGridHelpers\bin\Debug\HexGridHelpers.pdb
+D:\Egyetem\Szoftverarch\hex\HexGridHelpers\obj\Debug\HexGridHelpers.csproj.AssemblyReference.cache
+D:\Egyetem\Szoftverarch\hex\HexGridHelpers\obj\Debug\HexGridHelpers.csproj.CoreCompileInputs.cache
+D:\Egyetem\Szoftverarch\hex\HexGridHelpers\obj\Debug\HexGridHelpers.dll
+D:\Egyetem\Szoftverarch\hex\HexGridHelpers\obj\Debug\HexGridHelpers.pdb
