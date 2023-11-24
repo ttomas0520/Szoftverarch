@@ -20,6 +20,8 @@ namespace SwarmWPF.Logic {
                     hex.ReserveNext();
                 }
             }
+
+
         }
 
         private List<List<Hex>> createHexList(int row, int column) {

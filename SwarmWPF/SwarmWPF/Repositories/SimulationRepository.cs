@@ -11,7 +11,7 @@ namespace Swarm.Repositories {
     internal class SimulationRepository : ISimulationRepository {
         private readonly IMongoCollection<Simulation> _simulations;
 
-        public SimulationRepository(IOptions<DatabaseSettings> dbConfig) {
+        public SimulationRepository() {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("SwarmDb");
             _simulations = database.GetCollection<Simulation>("Simulations");
@@ -43,7 +43,7 @@ namespace Swarm.Repositories {
             return null;
         }
 
-        public async Task<List<Simulation>> GetEventsByIdsAsync(string id) {
+        public async Task<List<Simulation>> GetSimulationsByIdsAsync(string id) {
             var filter = Builders<Simulation>.Filter.Eq(ev => ev.Id, ObjectId.Parse(id));
             return await _simulations.Find(filter).ToListAsync();
         }
