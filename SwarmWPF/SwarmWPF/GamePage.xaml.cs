@@ -1,4 +1,5 @@
 ﻿using HexGridHelpers;
+using SwarmWPF.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,11 @@ namespace SwarmWPF {
     public partial class GamePage : Page {
         public int Row { get; set; }
         public int Column { get; set; }
-
+        public Board board { get; set; }
         public GamePage(int row, int column) {
             Row = row;
             Column = column;
+            board = new Board(row, column);
             InitializeComponent();
             Board.ItemsSource =
                    Enumerable.Range(0, row)
