@@ -13,6 +13,7 @@ namespace SwarmWPF.Logic {
             Row = row;
             Column = column;
             HexList = createHexList(row, column);
+            ConnectHexNeighbors();
         }
         public void CalculateNextRound() {
             foreach (var rowList in HexList) {
@@ -22,6 +23,14 @@ namespace SwarmWPF.Logic {
             }
 
 
+        }
+
+        public void ChangeHex() {
+            foreach (var rowList in HexList) {
+                foreach (var hex in rowList) {
+                    hex.ChangeFirstNeighbor();
+                }
+            }
         }
 
         private List<List<Hex>> createHexList(int row, int column) {
@@ -35,7 +44,6 @@ namespace SwarmWPF.Logic {
                 }
                 hexList.Add(rowList);
             }
-            ConnectHexNeighbors();
             return hexList;
         }
 

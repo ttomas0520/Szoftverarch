@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Name="play" Width="50" Height="30">
+            <Button Name="play" Width="50" Height="30" Click="play_Click">
                 <Image Source="Resources\Images\play_circle.png"></Image>
             </Button>
             <Button Name="stop" Width="50" Height="30">
@@ -44,7 +44,7 @@
             <hx:HexList.ItemTemplate>
                 <DataTemplate>
                     <TextBlock >                                
-                 <Run Text="{Binding Path=Ant, Mode=OneWay}"/>
+                 <Run Text="{Binding Path=Ant}"/>
                  <Run Text="("/>
                  <Run Text="{Binding Path=Y, Mode=OneWay}"/>
                  <Run Text=";"/>

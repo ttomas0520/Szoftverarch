@@ -47,5 +47,9 @@ namespace SwarmWPF {
             mainWindow.InsertRound(simulationRound);
         }
 
+
+        private void play_Click(object sender, RoutedEventArgs e) {
+            Gameboard.ChangeHex();
+        }
     }
 }
