@@ -19,13 +19,19 @@ namespace SwarmWPF {
     /// Interaction logic for GamePage.xaml
     /// </summary>
     public partial class GamePage : Page {
-        public GamePage() {
+        public int Row { get; set; }
+        public int Column { get; set; }
+
+        public GamePage(int row, int column) {
+            Row = row;
+            Column = column;
             InitializeComponent();
             Board.ItemsSource =
-                   Enumerable.Range(0, Board.RowCount)
-                       .SelectMany(r => Enumerable.Range(0, Board.ColumnCount)
+                   Enumerable.Range(0, row)
+                       .SelectMany(r => Enumerable.Range(0, column)
                            .Select(c => new IntPoint(c, r)))
                        .ToList();
+            DataContext = this;
         }
 
     }

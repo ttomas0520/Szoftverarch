@@ -30,3 +30,4 @@ D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\MenuPage.baml
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\GamePage.baml
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\bin\Debug\net7.0-windows\Resources\Images\SWARM.jpg
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\SwarmWPF_Content.g.cs
+D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs

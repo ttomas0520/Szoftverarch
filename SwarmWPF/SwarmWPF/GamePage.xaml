@@ -26,7 +26,8 @@
 
         <hx:HexList Grid.Row="1" Name="Board" 
              Margin="5"
-             RowCount="6" ColumnCount="8"
+            RowCount="{Binding Row, RelativeSource={RelativeSource AncestorType={x:Type local:GamePage}}}"
+            ColumnCount="{Binding Column, RelativeSource={RelativeSource AncestorType={x:Type local:GamePage}}}"
              Orientation="Horizontal">
             <hx:HexList.ItemContainerStyle>
                 <Style TargetType="{x:Type hx:HexItem}">
@@ -40,9 +41,12 @@
             <hx:HexList.ItemTemplate>
                 <DataTemplate>
                     <TextBlock >                                
+                 <Run Text="{Binding Path=Ant, Mode=OneWay}"/>
+                 <Run Text="("/>
                  <Run Text="{Binding Path=Y, Mode=OneWay}"/>
-                 <Run Text=","/>
+                 <Run Text=";"/>
                  <Run Text="{Binding Path=X, Mode=OneWay}"/>
+                 <Run Text=")"/>
                     </TextBlock>
                 </DataTemplate>
             </hx:HexList.ItemTemplate>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,8 +26,19 @@ namespace SwarmWPF {
             this.mainWindow = mainWindow;
         }
         private void OnStartGameClicked(object sender, RoutedEventArgs e) {
-            // Navigate to the GamePage
-            mainWindow.mainFrame.Navigate(new GamePage());
+            // Create an instance of GamePage
+
+
+            // Parse the values from TextBoxes and set RowCount and ColumnCount
+            if (int.TryParse(BoardHeight.Text, out int rowCount) && int.TryParse(BoardWidth.Text, out int columnCount)) {
+                GamePage gamePage = new GamePage(rowCount, columnCount);
+                mainWindow.mainFrame.Navigate(gamePage);
+            }
+            else {
+                // Handle invalid input (e.g., show an error message)
+                MessageBox.Show("Invalid input for RowCount or ColumnCount. Please enter valid integer values.");
+                return;
+            }
         }
 
         private void OnLoadGameClicked(object sender, RoutedEventArgs e) {
@@ -37,6 +49,11 @@ namespace SwarmWPF {
         private void OnExitGameClicked(object sender, RoutedEventArgs e) {
             // Implement the logic to close the application
             Application.Current.Shutdown();
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

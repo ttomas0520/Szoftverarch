@@ -25,6 +25,7 @@
                     Foreground="White"/>
                 <TextBox
                         x:Name="BoardHeight"
+                        PreviewTextInput="NumberValidationTextBox"
                         KeyboardNavigation.TabNavigation="Cycle"
                         Text="10"
                         MaxLength="3" 
@@ -40,6 +41,7 @@
                         Foreground="White"/>
                 <TextBox
                         x:Name="BoardWidth"
+                        PreviewTextInput="NumberValidationTextBox"
                         KeyboardNavigation.TabNavigation="Cycle"
                         Text="10"
                         MaxLength="3" 
