@@ -19,7 +19,7 @@ namespace SwarmWPF {
     /// Interaction logic for MenuPage.xaml
     /// </summary>
     public partial class MenuPage : Page {
-        private MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
         public MenuPage(MainWindow mainWindow) {
             InitializeComponent();
