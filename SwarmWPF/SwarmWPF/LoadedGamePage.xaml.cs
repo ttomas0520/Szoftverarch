@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwarmWPF.Models.DatabaseModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,11 @@ namespace SwarmWPF {
     /// Interaction logic for LoadedGamePage.xaml
     /// </summary>
     public partial class LoadedGamePage : Page {
-        public LoadedGamePage() {
+        private readonly MainWindow mainWindow;
+        private readonly List<Simulation> gameRounds;
+        public LoadedGamePage(MainWindow mainWindow, List<Simulation> gameRounds) {
+            this.mainWindow = mainWindow;
+            this.gameRounds = gameRounds;
             InitializeComponent();
         }
     }
