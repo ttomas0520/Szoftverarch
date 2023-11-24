@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SwarmWPF.Logic {
-    class Board {
+    public class Board {
         public int Row { get; set; }
         public int Column { get; set; }
         public List<List<Hex>> HexList { get; set; }
@@ -13,6 +13,15 @@ namespace SwarmWPF.Logic {
             Row = row;
             Column = column;
             HexList = createHexList(row, column);
+        }
+        public void CalculateNextRound() {
+            foreach (var rowList in HexList) {
+                foreach (var hex in rowList) {
+                    hex.ReserveNext();
+                }
+            }
+
+
         }
 
         private List<List<Hex>> createHexList(int row, int column) {

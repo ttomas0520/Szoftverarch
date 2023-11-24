@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\play_circle.png" />
+    <None Remove="Resources\Images\step.png" />
+    <None Remove="Resources\Images\stop_circle.png" />
     <None Remove="Resources\Images\SWARM.jpg" />
   </ItemGroup>
 
@@ -17,9 +20,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Images\play_circle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\step.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\stop_circle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\SWARM.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
   </ItemGroup>
 
 </Project>

@@ -24,3 +24,16 @@ D:\GITHUB\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.csproj.Genera
 D:\GITHUB\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.csproj.CoreCompileInputs.cache
 D:\GITHUB\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.dll
 D:\GITHUB\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.pdb
+D:\Egyetem\Szoftverarch\hex\HexGridControl\bin\Debug\HexGridControl.dll
+D:\Egyetem\Szoftverarch\hex\HexGridControl\bin\Debug\HexGridControl.pdb
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.csproj.AssemblyReference.cache
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl_MarkupCompile.cache
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl_MarkupCompile.lref
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\Themes\Generic.baml
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.g.resources
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.Properties.Resources.resources
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.csproj.GenerateResource.cache
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.csproj.CoreCompileInputs.cache
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.dll
+D:\Egyetem\Szoftverarch\hex\HexGridControl\obj\Debug\HexGridControl.pdb
