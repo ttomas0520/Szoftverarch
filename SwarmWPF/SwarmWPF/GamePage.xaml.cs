@@ -34,11 +34,10 @@ namespace SwarmWPF {
             Gameboard = new Board(row, column);
             Round = 1;
             InitializeComponent();
-            Board.ItemsSource =
-                   Enumerable.Range(0, row)
-                       .SelectMany(r => Enumerable.Range(0, column)
-                           .Select(c => new IntPoint(c, r)))
-                       .ToList();
+            Board.ItemsSource = Gameboard.HexList
+                .SelectMany(rowList => rowList)
+                .Select(hex => hex.Point)
+                .ToList();
             DataContext = this;
             NextRound();
         }

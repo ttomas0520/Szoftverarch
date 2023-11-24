@@ -30,7 +30,7 @@ namespace SwarmWPF.Logic {
             for (int i = 0; i < row; i++) {
                 List<Hex> rowList = new List<Hex>();
                 for (int j = 0; j < column; j++) {
-                    Hex hex = new Hex();
+                    Hex hex = new Hex(i, j);
                     rowList.Add(hex);
                 }
                 hexList.Add(rowList);

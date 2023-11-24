@@ -190,3 +190,7 @@ git_stats/*
 StyleCop.Cache
 bin
 obj
+hex\HexGridControl\obj
+hex\HexGridControl\bin
+SwarmWPF\bin
+SwarmWPF\obj
