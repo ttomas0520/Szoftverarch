@@ -44,8 +44,14 @@ namespace Swarm.Repositories {
         }
 
         public async Task<List<Simulation>> GetSimulationsByIdsAsync(string id) {
-            var filter = Builders<Simulation>.Filter.Eq(ev => ev.Id, ObjectId.Parse(id));
-            return await _simulations.Find(filter).ToListAsync();
+            try {
+                var filter = Builders<Simulation>.Filter.Eq(ev => ev.GameId, ObjectId.Parse(id));
+                return await _simulations.Find(filter).ToListAsync();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+            }
+            return null;
         }
 
         public async Task<bool> InsertOneAsync(Simulation simulation) {

@@ -115,3 +115,4 @@ D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelecti
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelectionWindow.g.cs
 D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelectionWindow.baml
 D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelectionWindow.g.cs
+D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\bin\Debug\net7.0-windows\Resources\Images\back.png

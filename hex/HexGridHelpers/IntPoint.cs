@@ -3,8 +3,8 @@ using System.ComponentModel;
 
 namespace HexGridHelpers {
     public struct IntPoint : IEquatable<IntPoint>, INotifyPropertyChanged {
-        private readonly int _x;
-        private readonly int _y;
+        public int _x;
+        public int _y;
         private string _ant;
         private string _color;
 
@@ -15,12 +15,10 @@ namespace HexGridHelpers {
             _y = y;
             _color = color;
             PropertyChanged = null;
-            if (isAnt)
-            {
+            if (isAnt) {
                 _ant = "X";
             }
-            else
-            {
+            else {
                 _ant = "";
             }
 

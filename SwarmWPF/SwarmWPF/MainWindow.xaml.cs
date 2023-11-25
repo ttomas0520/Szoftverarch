@@ -31,8 +31,9 @@ namespace SwarmWPF {
         }
         public async void LoadGame(string gameId) {
             var loadedGame = await _simulationRepository.GetSimulationsByIdsAsync(gameId);
-            mainFrame.Navigate(new LoadedGamePage(this, loadedGame));
-
+            if (loadedGame == null) { return; }
+            loadedGame = loadedGame.OrderBy(x => x.Round).ToList();
+            mainFrame.Navigate(new LoadedGamePage(loadedGame));
         }
     }
 }
