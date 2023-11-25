@@ -10,13 +10,19 @@ namespace HexGridHelpers {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public IntPoint(int x, int y, string color) {
+        public IntPoint(int x, int y, string color, bool isAnt) {
             _x = x;
             _y = y;
-            if ((x + y) % 2 == 0) { _ant = "X"; }
-            else { _ant = ""; };
             _color = color;
             PropertyChanged = null;
+            if (isAnt)
+            {
+                _ant = "X";
+            }
+            else
+            {
+                _ant = "";
+            }
 
         }
 

@@ -18,23 +18,33 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Diagnostics;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace SwarmWPF {
     /// <summary>
     /// Interaction logic for GamePage.xaml
     /// </summary>
-    public partial class GamePage : Page {
+    public partial class GamePage : Page, INotifyPropertyChanged
+    {
+        private int _round;
+
         private readonly MainWindow mainWindow;
         public int Row { get; set; }
         public int Column { get; set; }
-        public int Round { get; set; }
+        public int Round { get { return _round; } set { _round = value; OnPropertyChanged(); } }
+        public int Ant_Percentage {  get; set; }
         public Board Gameboard { get; set; }
         private DispatcherTimer timer;
-        public GamePage(MainWindow mainWindow, int row, int column) {
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public GamePage(MainWindow mainWindow, int row, int column, int ant_Percentage)
+        {
             this.mainWindow = mainWindow;
             Row = row;
             Column = column;
-            Gameboard = new Board(row, column);
+            Gameboard = new Board(row, column, ant_Percentage);
             Round = 1;
             InitializeComponent();
             Board.ItemsSource = Gameboard.HexList
@@ -46,6 +56,7 @@ namespace SwarmWPF {
             timer.Interval = TimeSpan.FromSeconds(1); // Az időzítési időköz beállítása (1 másodperc)
             timer.Tick += Timer_Tick;
             NextRound();
+            Ant_Percentage = ant_Percentage;
         }
         private void MenuClick(object sender, RoutedEventArgs e) {
             Button button = (Button)sender;
@@ -60,13 +71,10 @@ namespace SwarmWPF {
                     string selectedColor = colorSelectionWindow.SelectedColor;
 
                     // Change the hex color
-                    Gameboard.ChangeHexColor(intPoint.X, intPoint.Y, selectedColor);
+                    Gameboard.ChangeHexColor(intPoint.X, intPoint.Y, selectedColor, intPoint.Ant != null);
 
                     // Update the HexList
-                    Board.ItemsSource = Gameboard.HexList
-                        .SelectMany(rowList => rowList)
-                        .Select(hex => hex.Point)
-                        .ToList();
+                   
                 }
             }
         }
@@ -81,12 +89,13 @@ namespace SwarmWPF {
         }
 
         private void stop_Click(object sender, RoutedEventArgs e)
-        {
+        {           
             timer.Stop();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+            Round++;
             // Az eredeti kódot ide helyezzük be, amit 1 másodpercenként szeretnénk futtatni
             Gameboard.ChangeHex();
             Board.ItemsSource = Gameboard.HexList
@@ -94,6 +103,11 @@ namespace SwarmWPF {
                 .Select(hex => hex.Point)
                 .ToList();
             Trace.WriteLine("tick");
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
     }

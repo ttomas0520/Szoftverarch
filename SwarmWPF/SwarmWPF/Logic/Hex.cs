@@ -26,8 +26,8 @@ namespace SwarmWPF.Logic {
         public List<Hex> Neighbours { get; set; }
         public int Priority { get; set; }
 
-        public Hex(int row, int column, string color) {
-            Point = new IntPoint(row, column, color);
+        public Hex(int row, int column, string color, bool isAnt) {
+            Point = new IntPoint(row, column, color, isAnt);
         }
 
         public void ReserveNext() {

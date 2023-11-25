@@ -25,6 +25,10 @@
             <Button Name="step" Width="50" Height="30" Click="Timer_Tick">
                 <Image Source="Resources\Images\step.png"></Image>
             </Button>
+            <TextBlock>
+                <Run Text="Round: "/>
+                <Run Text="{Binding Path=Round}"/>
+            </TextBlock>
         </StackPanel>
 
         <hx:HexList Grid.Row="1" Name="Board" 

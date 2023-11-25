@@ -1,21 +1,28 @@
 ﻿using HexGridHelpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SwarmWPF.Logic {
-    public class Board {
+    public class Board: INotifyPropertyChanged
+    {
+        private List<List<Hex>> _hexlist;
         public int Row { get; set; }
         public int Column { get; set; }
-        public List<List<Hex>> HexList { get; set; }
-        public Board(int row, int column) {
+        public List<List<Hex>> HexList { get { return _hexlist; } set { _hexlist = value; OnPropertyChanged();} }
+        public Board(int row, int column, int percentage) {
             Row = row;
             Column = column;
-            HexList = createHexList(row, column);
+            HexList = createHexList(row, column, percentage);
             ConnectHexNeighbors();
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public void CalculateNextRound() {
             foreach (var rowList in HexList) {
                 foreach (var hex in rowList) {
@@ -34,18 +41,30 @@ namespace SwarmWPF.Logic {
             }
         }
 
-        public void ChangeHexColor(int x, int y, string color) {
-            var point = new IntPoint(x, y, color);
+        public void ChangeHexColor(int x, int y, string color, bool isAnt) {
+            var point = new IntPoint(x, y, color, isAnt);
             HexList[x][y].Point = point;
         }
 
-        private List<List<Hex>> createHexList(int row, int column) {
+        private List<List<Hex>> createHexList(int row, int column, int percentage) {
             List<List<Hex>> hexList = new List<List<Hex>>();
+            var all = row * column;
+            int entites = all * percentage / 100;
+            List<bool> isAnt = new List<bool>();
+            for (int i=0; i<all; i++)
+            {
+                if (i < entites) isAnt.Add(true);
+                else
+                {
+                    isAnt.Add(false);
+                }
+            }
+            isAnt=isAnt.OrderBy(x => Random.Shared.Next()).ToList();
 
             for (int i = 0; i < row; i++) {
                 List<Hex> rowList = new List<Hex>();
                 for (int j = 0; j < column; j++) {
-                    Hex hex = new Hex(i, j, "red");
+                    Hex hex = new Hex(i, j, "white", isAnt[i*column+j]);
                     rowList.Add(hex);
                 }
                 hexList.Add(rowList);
@@ -82,6 +101,10 @@ namespace SwarmWPF.Logic {
             }
 
             return neighbors;
+        }
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

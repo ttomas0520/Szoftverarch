@@ -48,6 +48,21 @@
                         MaxWidth="100"
                         HorizontalAlignment="Stretch"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" MinWidth="200" HorizontalAlignment="Center">
+                <Label
+                     Content="Ant number percentage:"
+                     FontSize="24"
+                     FontWeight="Bold"
+                     Foreground="White"/>
+                <TextBox
+                     x:Name="Ant_number"
+                     PreviewTextInput="NumberValidationTextBox"
+                     KeyboardNavigation.TabNavigation="Cycle"
+                     Text="10"
+                     MaxLength="2" 
+                     MaxWidth="100"
+                     HorizontalAlignment="Stretch"/>    
+            </StackPanel>
 
             <Button
                     Content="Start Game"

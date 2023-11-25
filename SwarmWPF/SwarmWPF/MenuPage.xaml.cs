@@ -31,8 +31,8 @@ namespace SwarmWPF {
 
 
             // Parse the values from TextBoxes and set RowCount and ColumnCount
-            if (int.TryParse(BoardHeight.Text, out int rowCount) && int.TryParse(BoardWidth.Text, out int columnCount)) {
-                GamePage gamePage = new GamePage(mainWindow, rowCount, columnCount);
+            if (int.TryParse(BoardHeight.Text, out int rowCount) && int.TryParse(BoardWidth.Text, out int columnCount) && int.TryParse(Ant_number.Text, out int ant_percentage)) {
+                GamePage gamePage = new GamePage(mainWindow, rowCount, columnCount, ant_percentage);
                 mainWindow.mainFrame.Navigate(gamePage);
             }
             else {

@@ -146,7 +146,7 @@ namespace HexGridHelpers {
             }
 
             if (row >= 0 && row < rows && column >= 0 && column <= columns)
-                return new IntPoint(row, column, "");
+                return new IntPoint(row, column, "",false);
             return null;
         }
 
@@ -205,7 +205,7 @@ namespace HexGridHelpers {
             }
 
             if (row >= 0 && row < rows && column >= 0 && column <= columns)
-                return new IntPoint(row, column, "");
+                return new IntPoint(row, column, "", false);
             return null;
         }
     }
