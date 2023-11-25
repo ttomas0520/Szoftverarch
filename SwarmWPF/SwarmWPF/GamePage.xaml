@@ -34,11 +34,11 @@
              Orientation="Horizontal">
             <hx:HexList.ItemContainerStyle>
                 <Style TargetType="{x:Type hx:HexItem}">
-                    <Setter Property="Grid.Row" Value="{Binding Path=Y}"/>
-                    <Setter Property="Grid.Column" Value="{Binding Path=X}"/>
+                    <Setter Property="Grid.Row" Value="{Binding Path=X}"/>
+                    <Setter Property="Grid.Column" Value="{Binding Path=Y}"/>
                     <Setter Property="BorderThickness" Value="1.5"/>
                     <Setter Property="FontSize" Value="16"/>
-                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Background" Value="{Binding Path=Color}"/>
                 </Style>
             </hx:HexList.ItemContainerStyle>
             <hx:HexList.ItemTemplate>
@@ -52,13 +52,13 @@
                         <TextBlock >                                
                  <Run Text="{Binding Path=Ant, Mode=OneWay}"/>
                  <Run Text="("/>
-                 <Run Text="{Binding Path=Y, Mode=OneWay}"/>
-                 <Run Text=";"/>
                  <Run Text="{Binding Path=X, Mode=OneWay}"/>
+                 <Run Text=";"/>
+                 <Run Text="{Binding Path=Y, Mode=OneWay}"/>
                  <Run Text=")"/>
                         </TextBlock>
                     </StackPanel>
-                   
+
                 </DataTemplate>
             </hx:HexList.ItemTemplate>
 

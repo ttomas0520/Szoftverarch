@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HexGridHelpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,13 +34,18 @@ namespace SwarmWPF.Logic {
             }
         }
 
+        public void ChangeHexColor(int x, int y, string color) {
+            var point = new IntPoint(x, y, color);
+            HexList[x][y].Point = point;
+        }
+
         private List<List<Hex>> createHexList(int row, int column) {
             List<List<Hex>> hexList = new List<List<Hex>>();
 
             for (int i = 0; i < row; i++) {
                 List<Hex> rowList = new List<Hex>();
                 for (int j = 0; j < column; j++) {
-                    Hex hex = new Hex(i, j);
+                    Hex hex = new Hex(i, j, "red");
                     rowList.Add(hex);
                 }
                 hexList.Add(rowList);

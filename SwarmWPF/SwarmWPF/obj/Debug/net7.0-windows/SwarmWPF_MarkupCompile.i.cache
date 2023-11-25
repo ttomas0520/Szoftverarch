@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\
+D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\
 SwarmWPF
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\App.xaml
+D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\App.xaml
 4-2036507618
 51510120514
 141530981323
-2141017697987
+214495362206
 GamePage.xaml;LoadedGamePage.xaml;MainWindow.xaml;MenuPage.xaml;
 
 True
