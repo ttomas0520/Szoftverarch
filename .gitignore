@@ -1,2 +1,5 @@
 
 *.vsidx
+
+**/obj
+*.obj
