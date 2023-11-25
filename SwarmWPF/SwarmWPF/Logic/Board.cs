@@ -8,12 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SwarmWPF.Logic {
-    public class Board: INotifyPropertyChanged
-    {
+    public class Board : INotifyPropertyChanged {
         private List<List<Hex>> _hexlist;
         public int Row { get; set; }
         public int Column { get; set; }
-        public List<List<Hex>> HexList { get { return _hexlist; } set { _hexlist = value; OnPropertyChanged();} }
+        public List<List<Hex>> HexList { get { return _hexlist; } set { _hexlist = value; OnPropertyChanged(); } }
         public Board(int row, int column, int percentage) {
             Row = row;
             Column = column;
@@ -30,14 +29,11 @@ namespace SwarmWPF.Logic {
                 }
             }
 
-            foreach (var rowList in HexList)
-            {
-                foreach (var hex in rowList)
-                {
+            foreach (var rowList in HexList) {
+                foreach (var hex in rowList) {
                     hex.StepNext();
                 }
             }
-
 
         }
 
@@ -48,20 +44,18 @@ namespace SwarmWPF.Logic {
             var all = row * column;
             int entites = all * percentage / 100;
             List<bool> isAnt = new List<bool>();
-            for (int i=0; i<all; i++)
-            {
+            for (int i = 0; i < all; i++) {
                 if (i < entites) isAnt.Add(true);
-                else
-                {
+                else {
                     isAnt.Add(false);
                 }
             }
-            isAnt=isAnt.OrderBy(x => Random.Shared.Next()).ToList();
+            isAnt = isAnt.OrderBy(x => Random.Shared.Next()).ToList();
 
             for (int i = 0; i < row; i++) {
                 List<Hex> rowList = new List<Hex>();
                 for (int j = 0; j < column; j++) {
-                    Hex hex = new Hex(i, j, "white", isAnt[i*column+j]);
+                    Hex hex = new Hex(i, j, "white", isAnt[i * column + j]);
                     rowList.Add(hex);
                 }
                 hexList.Add(rowList);
@@ -99,8 +93,7 @@ namespace SwarmWPF.Logic {
 
             return neighbors;
         }
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
+        protected void OnPropertyChanged([CallerMemberName] string name = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }

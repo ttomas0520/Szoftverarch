@@ -6,7 +6,7 @@
         <TextBlock Text="Select a color:" Margin="10" />
         <ListBox Name="ColorListBox" SelectionMode="Single" Margin="10">
             <ListBoxItem Content="AntiAntHex" />
-            <ListBoxItem Content="Blue" />
+            <ListBoxItem Content="EmptyHex" />
             <!-- Add other color options as needed -->
         </ListBox>
         <Button Content="OK" Name="OKButton" Width="80" Height="30" HorizontalAlignment="Center" Margin="10"

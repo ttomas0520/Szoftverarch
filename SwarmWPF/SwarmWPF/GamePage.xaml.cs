@@ -69,15 +69,22 @@ namespace SwarmWPF {
                 if (colorSelectionWindow.ShowDialog() == true) {
                     // User selected a color
                     string selectedHexType = colorSelectionWindow.SelectedType;
-                    switch (selectedHexType)
-                    {
+                    switch (selectedHexType) {
                         case "AntiAntHex": {
-                                var newAntiAntHex = new AntiAntHex(intPoint.X,intPoint.Y,"",intPoint.Ant=="X");
+                                var newAntiAntHex = new AntiAntHex(intPoint.X, intPoint.Y, "", intPoint.Ant == "X");
                                 newAntiAntHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
                                 ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newAntiAntHex);
                                 Gameboard.HexList[intPoint.X][intPoint.Y] = newAntiAntHex;
 
-                                break; }
+                                break;
+                            }
+                        case "EmptyHex": {
+                                var newEmptyHex = new EmptyHex(intPoint.X, intPoint.Y, "", intPoint.Ant == "X");
+                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
+                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
+                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
+                                break;
+                            }
                         default: break;
                     }
 
@@ -92,11 +99,10 @@ namespace SwarmWPF {
                 }
             }
         }
-        private void ChangeNeighbours(Hex oldH, Hex newH){
-            foreach( var i in oldH.Neighbours)
-                {      
-                   i.Neighbours[i.Neighbours.IndexOf(oldH)] = newH;     
-                }
+        private void ChangeNeighbours(Hex oldH, Hex newH) {
+            foreach (var i in oldH.Neighbours) {
+                if (i != null) i.Neighbours[i.Neighbours.IndexOf(oldH)] = newH;
+            }
         }
 
         private void SaveToDb() {
