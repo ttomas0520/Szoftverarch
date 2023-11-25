@@ -76,22 +76,42 @@ namespace SwarmWPF.Logic {
             List<Hex> neighbors = new List<Hex>();
 
             // Define the six possible neighbors' coordinates
-            int[,] neighborCoords = {
-            { -1, 0 }, { -1, 1 }, { 0, 1 },
-            { 1, 0 }, { 1, -1 }, { 0, -1 }
-        };
+            if (column % 2 == 0) {
+                int[,] neighborCoords = {
+                    { -1, 0 }, { -1, 1 }, { 0, 1 },
+                    { 1, 0 }, { 0, -1 }, { -1, -1 }
+                };
 
-            for (int k = 0; k < 6; k++) {
-                int neighborRow = row + neighborCoords[k, 0];
-                int neighborColumn = column + neighborCoords[k, 1];
+                for (int k = 0; k < 6; k++) {
+                    int neighborRow = row + neighborCoords[k, 0];
+                    int neighborColumn = column + neighborCoords[k, 1];
 
-                // Check if the neighbor coordinates are within the board bounds
-                if (neighborRow >= 0 && neighborRow < Row && neighborColumn >= 0 && neighborColumn < Column) {
-                    neighbors.Add(HexList[neighborRow][neighborColumn]);
+                    // Check if the neighbor coordinates are within the board bounds
+                    if (neighborRow >= 0 && neighborRow < Row && neighborColumn >= 0 && neighborColumn < Column) {
+                        neighbors.Add(HexList[neighborRow][neighborColumn]);
+                    }
                 }
-            }
 
-            return neighbors;
+                return neighbors;
+            }
+            else {
+                int[,] neighborCoords = {
+                { -1, 0 }, { 0, 1 }, { 1, 1 },
+                { 1, 0 }, { 1, -1 }, { 0, -1 }
+            };
+
+                for (int k = 0; k < 6; k++) {
+                    int neighborRow = row + neighborCoords[k, 0];
+                    int neighborColumn = column + neighborCoords[k, 1];
+
+                    // Check if the neighbor coordinates are within the board bounds
+                    if (neighborRow >= 0 && neighborRow < Row && neighborColumn >= 0 && neighborColumn < Column) {
+                        neighbors.Add(HexList[neighborRow][neighborColumn]);
+                    }
+                }
+
+                return neighbors;
+            }
         }
         protected void OnPropertyChanged([CallerMemberName] string name = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

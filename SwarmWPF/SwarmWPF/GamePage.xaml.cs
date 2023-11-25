@@ -71,7 +71,7 @@ namespace SwarmWPF {
                     string selectedHexType = colorSelectionWindow.SelectedType;
                     switch (selectedHexType) {
                         case "AntiAntHex": {
-                                var newAntiAntHex = new AntiAntHex(intPoint.X, intPoint.Y, "", intPoint.Ant == "X");
+                                var newAntiAntHex = new AntiAntHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
                                 newAntiAntHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
                                 ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newAntiAntHex);
                                 Gameboard.HexList[intPoint.X][intPoint.Y] = newAntiAntHex;
@@ -79,7 +79,49 @@ namespace SwarmWPF {
                                 break;
                             }
                         case "EmptyHex": {
-                                var newEmptyHex = new EmptyHex(intPoint.X, intPoint.Y, "", intPoint.Ant == "X");
+                                var newEmptyHex = new EmptyHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
+                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
+                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
+                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
+                                break;
+                            }
+                        case "UpHex": {
+                                var newEmptyHex = new UpHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
+                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
+                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
+                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
+                                break;
+                            }
+                        case "DownHex": {
+                                var newEmptyHex = new DownHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
+                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
+                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
+                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
+                                break;
+                            }
+                        case "UpRightHex": {
+                                var newEmptyHex = new UpRightHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
+                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
+                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
+                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
+                                break;
+                            }
+                        case "DownRightHex": {
+                                var newEmptyHex = new DownRightHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
+                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
+                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
+                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
+                                break;
+                            }
+                        case "DownLeftHex": {
+                                var newEmptyHex = new DownLeftHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
+                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
+                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
+                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
+                                break;
+                            }
+                        case "UpLeftHex": {
+                                var newEmptyHex = new UpLeftHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
                                 newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
                                 ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
                                 Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;

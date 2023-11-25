@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwarmWPF.Logic {
     class AntiAntHex : Hex {
-        public AntiAntHex(int row, int column, string color, bool isAnt) : base(row, column, "LightGreen", isAnt) {
+        public AntiAntHex(int row, int column, bool isAnt) : base(row, column, "LightGreen", isAnt) {
 
         }
 
