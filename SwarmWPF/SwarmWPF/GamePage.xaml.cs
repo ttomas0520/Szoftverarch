@@ -58,7 +58,7 @@ namespace SwarmWPF {
             timer.Tick += Timer_Tick;
             Ant_Percentage = ant_Percentage;
         }
-        private void MenuClick(object sender, RoutedEventArgs e) {
+        private void HexTypeChanger(object sender, RoutedEventArgs e) {
             Button button = (Button)sender;
             if (button != null) {
                 // Get the HexItem from the button's Tag attribute
@@ -68,16 +68,26 @@ namespace SwarmWPF {
                 var colorSelectionWindow = new HexTypeSelectionWindow();
                 if (colorSelectionWindow.ShowDialog() == true) {
                     // User selected a color
-                    string selectedColor = colorSelectionWindow.SelectedColor;
+                    string selectedHexType = colorSelectionWindow.SelectedType;
+                    switch (selectedHexType)
+                    {
+                        case "AntiAntHex": {
+                                var newAntiAntHex = new AntiAntHex(intPoint.X,intPoint.Y,"",intPoint.Ant=="X");
+                                newAntiAntHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
+                                Gameboard.HexList[intPoint.X][intPoint.Y] = newAntiAntHex;
+
+                                break; }
+                        default: break;
+                    }
 
                     // Change the hex color
-                    Gameboard.ChangeHexColor(intPoint.X, intPoint.Y, selectedColor, intPoint.Ant != "");
+                    //Gameboard.ChangeHexColor(intPoint.X, intPoint.Y, selectedColor, intPoint.Ant != null);
+
+                    // Update the HexList
                     Board.ItemsSource = Gameboard.HexList
                         .SelectMany(rowList => rowList)
                         .Select(hex => hex.Point)
                         .ToList();
-                    // Update the HexList
-
                 }
             }
         }
@@ -108,7 +118,7 @@ namespace SwarmWPF {
             SaveToDb();
             Round++;
             // Az eredeti kódot ide helyezzük be, amit 1 másodpercenként szeretnénk futtatni
-            Gameboard.ChangeHex();
+            Gameboard.CalculateNextRound();
             Board.ItemsSource = Gameboard.HexList
                 .SelectMany(rowList => rowList)
                 .Select(hex => hex.Point)

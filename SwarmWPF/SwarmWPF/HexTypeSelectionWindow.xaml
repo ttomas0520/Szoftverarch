@@ -5,7 +5,7 @@
     <StackPanel>
         <TextBlock Text="Select a color:" Margin="10" />
         <ListBox Name="ColorListBox" SelectionMode="Single" Margin="10">
-            <ListBoxItem Content="Red" />
+            <ListBoxItem Content="AntiAntHex" />
             <ListBoxItem Content="Blue" />
             <!-- Add other color options as needed -->
         </ListBox>

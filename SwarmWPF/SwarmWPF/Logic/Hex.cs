@@ -16,13 +16,10 @@ namespace SwarmWPF.Logic {
             set {
                 if (_point != value) {
                     _point = value;
-
-
                 }
             }
         }
-        public bool HasAnt { get; set; }
-        public bool IsReserved { get; set; }
+        public Hex? ReservedBy { get; set; }
         public List<Hex> Neighbours { get; set; }
         public int Priority { get; set; }
 
@@ -30,14 +27,23 @@ namespace SwarmWPF.Logic {
             Point = new IntPoint(row, column, color, isAnt);
         }
 
-        public void ReserveNext() {
-            if (!HasAnt) return;
+        public virtual void ReserveNext() {
+            return;
         }
-        public void ChangeFirstNeighbor() {
-            var firstNeighbor = Neighbours.First();
-            var point = firstNeighbor.Point;
-            point.Ant = "asd";
-            Neighbours.First().Point = point;
+
+
+
+        public void StepNext() {
+            if (ReservedBy != null) {
+                var point = new IntPoint(Point.X, Point.Y, Point.Color, true);
+                this.Point = point;
+                this.ReservedBy = null;
+            }
+            else {
+                var point = new IntPoint(Point.X, Point.Y, Point.Color, false);
+                this.Point = point;
+            }
+
         }
     }
 }
