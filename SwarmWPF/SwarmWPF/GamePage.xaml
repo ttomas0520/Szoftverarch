@@ -49,7 +49,7 @@
                 <DataTemplate>
                     <StackPanel>
                         <Button Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType={x:Type hx:HexItem}}}"
-                              BorderBrush="White" Click="MenuClick" Tag="{Binding}">
+                              BorderBrush="White" Click="HexTypeChanger" Tag="{Binding}">
                             <Image Source="Resources\Images\settings.png"></Image>
                         </Button>
 

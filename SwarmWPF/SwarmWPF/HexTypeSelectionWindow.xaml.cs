@@ -17,7 +17,7 @@ namespace SwarmWPF {
     /// Interaction logic for HexTypeSelectionWindow.xaml
     /// </summary>
     public partial class HexTypeSelectionWindow : Window {
-        public string SelectedColor { get; private set; }
+        public string SelectedType { get; private set; }
 
         public HexTypeSelectionWindow() {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace SwarmWPF {
 
         private void OKButton_Click(object sender, RoutedEventArgs e) {
             if (ColorListBox.SelectedItem != null) {
-                SelectedColor = ((ListBoxItem)ColorListBox.SelectedItem).Content.ToString();
+                SelectedType = ((ListBoxItem)ColorListBox.SelectedItem).Content.ToString();
                 DialogResult = true;
             }
             else {

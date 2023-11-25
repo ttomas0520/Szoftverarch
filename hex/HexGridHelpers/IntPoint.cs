@@ -43,10 +43,15 @@ namespace HexGridHelpers {
             }
         }
 
-        public void SetAnt(string ant) {
-            if (_ant != ant) {
-                _ant = ant;
+        public void SetAnt(bool hasA) {
+            if (hasA)
+            {
+                Ant = "X";
                 OnPointChanged("Ant");
+            }
+            else
+            {
+                _ant = "";
             }
         }
         public string Color {

@@ -30,21 +30,18 @@ namespace SwarmWPF.Logic {
                 }
             }
 
-
-        }
-
-        public void ChangeHex() {
-            foreach (var rowList in HexList) {
-                foreach (var hex in rowList) {
-                    hex.ChangeFirstNeighbor();
+            foreach (var rowList in HexList)
+            {
+                foreach (var hex in rowList)
+                {
+                    hex.StepNext();
                 }
             }
+
+
         }
 
-        public void ChangeHexColor(int x, int y, string color, bool isAnt) {
-            var point = new IntPoint(x, y, color, isAnt);
-            HexList[x][y].Point = point;
-        }
+
 
         private List<List<Hex>> createHexList(int row, int column, int percentage) {
             List<List<Hex>> hexList = new List<List<Hex>>();
