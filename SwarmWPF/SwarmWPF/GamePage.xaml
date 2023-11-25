@@ -43,14 +43,22 @@
             </hx:HexList.ItemContainerStyle>
             <hx:HexList.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock >                                
+                    <StackPanel>
+                        <Button Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType={x:Type hx:HexItem}}}"
+                              BorderBrush="White" Click="MenuClick" Tag="{Binding}">
+                            <Image Source="Resources\Images\settings.png"></Image>
+                        </Button>
+
+                        <TextBlock >                                
                  <Run Text="{Binding Path=Ant, Mode=OneWay}"/>
                  <Run Text="("/>
                  <Run Text="{Binding Path=Y, Mode=OneWay}"/>
                  <Run Text=";"/>
                  <Run Text="{Binding Path=X, Mode=OneWay}"/>
                  <Run Text=")"/>
-                    </TextBlock>
+                        </TextBlock>
+                    </StackPanel>
+                   
                 </DataTemplate>
             </hx:HexList.ItemTemplate>
 

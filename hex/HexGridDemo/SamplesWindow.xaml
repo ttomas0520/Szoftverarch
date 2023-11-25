@@ -465,7 +465,7 @@
                 
                 <hx:HexGrid Grid.Row="1" Grid.Column="1"
                             RowCount="3" ColumnCount="3" Orientation="Horizontal">
-                <hx:HexItem Grid.Row="0" Grid.Column="1" Content="2"/>
+                <hx:HexItem Grid.Row="0" Grid.Column="1" Content="123"/>
 
                 <hx:HexItem Grid.Row="1" Grid.Column="0" Content="1"/>
                 <hx:HexItem Grid.Row="1" Grid.Column="1" Content="0" Background="Gold"/>

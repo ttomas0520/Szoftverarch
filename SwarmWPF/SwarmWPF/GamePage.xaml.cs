@@ -1,4 +1,5 @@
-﻿using HexGridHelpers;
+﻿using HexGridControl;
+using HexGridHelpers;
 using SwarmWPF.Logic;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,17 @@ namespace SwarmWPF {
                        .ToList();
             DataContext = this;
         }
-
+        private void MenuClick(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            if (button != null)
+            {
+                // Az OriginalSource-on keresztül hozzáférünk a gomb Tag attribútumához rendelt HexItem objektumhoz
+                IntPoint intPoint = (IntPoint)button.Tag;
+                
+                MessageBox.Show(intPoint.X.ToString(), "HexMenu", MessageBoxButton.OK, MessageBoxImage.Exclamation);             
+            }
+            
+        }
     }
 }

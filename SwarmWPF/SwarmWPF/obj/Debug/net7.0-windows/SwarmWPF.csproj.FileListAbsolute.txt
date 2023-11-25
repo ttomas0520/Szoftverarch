@@ -68,3 +68,4 @@ D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\ref\SwarmWPF.
 D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\bin\Debug\net7.0-windows\Resources\Images\play_circle.png
 D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\bin\Debug\net7.0-windows\Resources\Images\step.png
 D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\bin\Debug\net7.0-windows\Resources\Images\stop_circle.png
+D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\bin\Debug\net7.0-windows\Resources\Images\settings.png
