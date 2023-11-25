@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HexGridHelpers
-{
-    public class HexArrayHelper
-    {
+namespace HexGridHelpers {
+    public class HexArrayHelper {
         private HexDirection[] _directions = Enum.GetValues(typeof(HexDirection)).OfType<HexDirection>().ToArray();
 
         public bool IsHorizontal { get; set; }
@@ -18,23 +16,20 @@ namespace HexGridHelpers
         /// <param name="size">Board dimensions</param>
         /// <param name="origin">Current hex coordinates</param>
         /// <param name="dir">Direction</param>
-        public IntPoint? GetNextHex(IntSize size, IntPoint origin, HexDirection dir)
-        {
+        public IntPoint? GetNextHex(IntSize size, IntPoint origin, HexDirection dir) {
             if (IsHorizontal)
                 return GetNextHexHorizontal(size, origin, dir);
 
             return GetNextHexVertical(size, origin, dir);
-        }        
+        }
 
         /// <summary>
         /// Returns all adjacent hexes
         /// </summary>
         /// <param name="size">Board dimensions</param>
         /// <param name="origin">Current hex coordinates</param>        
-        public IEnumerable<IntPoint> GetNeighbours(IntSize size, IntPoint origin)
-        {
-            for (int index = 0; index < _directions.Length; index++)
-            {
+        public IEnumerable<IntPoint> GetNeighbours(IntSize size, IntPoint origin) {
+            for (int index = 0; index < _directions.Length; index++) {
                 HexDirection dir = _directions[index];
                 var point = GetNextHex(size, origin, dir);
                 if (point.HasValue)
@@ -50,20 +45,17 @@ namespace HexGridHelpers
         /// <param name="origin">Current hex coordinates</param> 
         /// <param name="predicate">Search criteria</param>
         /// <returns></returns>
-        public IEnumerable<IntPoint> GetArea(IntSize size, IntPoint origin, Func<IntPoint, bool> predicate)
-        {
+        public IEnumerable<IntPoint> GetArea(IntSize size, IntPoint origin, Func<IntPoint, bool> predicate) {
             if (false == predicate(origin))
                 yield break;
             int idx = 0;
 
             var points = new List<IntPoint>();
             points.Add(origin);
-            do
-            {
+            do {
                 IntPoint p = points[idx];
                 yield return p;
-                foreach (var point in GetNeighbours(size, p).Where(predicate))
-                {
+                foreach (var point in GetNeighbours(size, p).Where(predicate)) {
                     if (points.IndexOf(point) < 0)
                         points.Add(point);
                 }
@@ -78,14 +70,11 @@ namespace HexGridHelpers
         /// <param name="size">Board dimensions</param>
         /// <param name="origin">Current hex coordinates</param>
         /// <param name="dir">Direction</param>        
-        public IEnumerable<IntPoint> GetRay(IntSize size, IntPoint origin, HexDirection dir)
-        {
+        public IEnumerable<IntPoint> GetRay(IntSize size, IntPoint origin, HexDirection dir) {
             IntPoint? next;
-            do
-            {
+            do {
                 next = GetNextHex(size, origin, dir);
-                if (next != null)
-                {
+                if (next != null) {
                     yield return next.Value;
                     origin = next.Value;
                 }
@@ -93,14 +82,12 @@ namespace HexGridHelpers
             while (next != null);
         }
 
-        public bool IsNeigbour(IntPoint neighbour, IntSize size, IntPoint origin)
-        {
+        public bool IsNeigbour(IntPoint neighbour, IntSize size, IntPoint origin) {
             var nb = GetNeighbours(size, origin);
             return nb.Any(p => p == neighbour);
         }
 
-        private IntPoint? GetNextHexHorizontal(IntSize size, IntPoint origin, HexDirection dir)
-        {
+        private IntPoint? GetNextHexHorizontal(IntSize size, IntPoint origin, HexDirection dir) {
             if (dir == HexDirection.Left || dir == HexDirection.Right)
                 return null;
 
@@ -129,8 +116,7 @@ namespace HexGridHelpers
             if (evenColumn == false && row == rows - 1 && (dir == HexDirection.DownLeft || dir == HexDirection.DownRight))
                 return null;
 
-            switch (dir)
-            {
+            switch (dir) {
                 case HexDirection.Up:
                     row--;
                     break;
@@ -160,12 +146,11 @@ namespace HexGridHelpers
             }
 
             if (row >= 0 && row < rows && column >= 0 && column <= columns)
-                return new IntPoint(row, column);
+                return new IntPoint(row, column, "",false);
             return null;
         }
 
-        private IntPoint? GetNextHexVertical(IntSize size, IntPoint origin, HexDirection dir)
-        {
+        private IntPoint? GetNextHexVertical(IntSize size, IntPoint origin, HexDirection dir) {
             if (dir == HexDirection.Up || dir == HexDirection.Down)
                 return null;
 
@@ -194,8 +179,7 @@ namespace HexGridHelpers
             if (evenRow == false && column == columns - 1 && (dir == HexDirection.UpRight || dir == HexDirection.DownRight))
                 return null;
 
-            switch (dir)
-            {
+            switch (dir) {
                 case HexDirection.Right:
                     column++;
                     break;
@@ -221,7 +205,7 @@ namespace HexGridHelpers
             }
 
             if (row >= 0 && row < rows && column >= 0 && column <= columns)
-                return new IntPoint(row, column);
+                return new IntPoint(row, column, "", false);
             return null;
         }
     }

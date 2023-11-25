@@ -3,8 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:hx="clr-namespace:HexGridControl;assembly=HexGridControl"        
-      xmlns:vm="clr-namespace:HexGridHelpers;assembly=HexGridHelpers"
+      xmlns:hx="clr-namespace:HexGridControl;assembly=HexGridControl"   
       xmlns:local="clr-namespace:SwarmWPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -16,15 +15,19 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Name="play" Width="50" Height="30">
+            <Button Name="play" Width="50" Height="30" Click="play_Click">
                 <Image Source="Resources\Images\play_circle.png"></Image>
             </Button>
-            <Button Name="stop" Width="50" Height="30">
+            <Button Name="stop" Width="50" Height="30" Click="stop_Click">
                 <Image Source="Resources\Images\stop_circle.png"></Image>
             </Button>
-            <Button Name="step" Width="50" Height="30">
+            <Button Name="step" Width="50" Height="30" Click="Timer_Tick">
                 <Image Source="Resources\Images\step.png"></Image>
             </Button>
+            <TextBlock>
+                <Run Text="Round: "/>
+                <Run Text="{Binding Path=Round}"/>
+            </TextBlock>
         </StackPanel>
 
         <hx:HexList Grid.Row="1" Name="Board" 
@@ -34,23 +37,31 @@
              Orientation="Horizontal">
             <hx:HexList.ItemContainerStyle>
                 <Style TargetType="{x:Type hx:HexItem}">
-                    <Setter Property="Grid.Row" Value="{Binding Path=Y}"/>
-                    <Setter Property="Grid.Column" Value="{Binding Path=X}"/>
+                    <Setter Property="Grid.Row" Value="{Binding Path=X}"/>
+                    <Setter Property="Grid.Column" Value="{Binding Path=Y}"/>
                     <Setter Property="BorderThickness" Value="1.5"/>
                     <Setter Property="FontSize" Value="16"/>
-                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Background" Value="{Binding Path=Color}"/>
                 </Style>
             </hx:HexList.ItemContainerStyle>
             <hx:HexList.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock >                                
+                    <StackPanel>
+                        <Button Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType={x:Type hx:HexItem}}}"
+                              BorderBrush="White" Click="MenuClick" Tag="{Binding}">
+                            <Image Source="Resources\Images\settings.png"></Image>
+                        </Button>
+
+                        <TextBlock >                                
                  <Run Text="{Binding Path=Ant, Mode=OneWay}"/>
                  <Run Text="("/>
-                 <Run Text="{Binding Path=Y, Mode=OneWay}"/>
-                 <Run Text=";"/>
                  <Run Text="{Binding Path=X, Mode=OneWay}"/>
+                 <Run Text=";"/>
+                 <Run Text="{Binding Path=Y, Mode=OneWay}"/>
                  <Run Text=")"/>
-                    </TextBlock>
+                        </TextBlock>
+                    </StackPanel>
+
                 </DataTemplate>
             </hx:HexList.ItemTemplate>
 

@@ -16,36 +16,108 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using System.Diagnostics;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using MongoDB.Bson;
 
 namespace SwarmWPF {
     /// <summary>
     /// Interaction logic for GamePage.xaml
     /// </summary>
-    public partial class GamePage : Page {
+    public partial class GamePage : Page, INotifyPropertyChanged {
+        private int _round;
+
         private readonly MainWindow mainWindow;
+        private readonly ObjectId GameId;
         public int Row { get; set; }
         public int Column { get; set; }
-        public int Round { get; set; }
+        public int Round { get { return _round; } set { _round = value; OnPropertyChanged(); } }
+        public int Ant_Percentage { get; set; }
         public Board Gameboard { get; set; }
-        public GamePage(MainWindow mainWindow, int row, int column) {
+        private DispatcherTimer timer;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public GamePage(MainWindow mainWindow, int row, int column, int ant_Percentage) {
             this.mainWindow = mainWindow;
+            GameId = ObjectId.GenerateNewId();
             Row = row;
             Column = column;
-            Gameboard = new Board(row, column);
+            Gameboard = new Board(row, column, ant_Percentage);
             Round = 1;
             InitializeComponent();
-            Board.ItemsSource =
-                   Enumerable.Range(0, row)
-                       .SelectMany(r => Enumerable.Range(0, column)
-                           .Select(c => new IntPoint(c, r)))
-                       .ToList();
+            Board.ItemsSource = Gameboard.HexList
+                .SelectMany(rowList => rowList)
+                .Select(hex => hex.Point)
+                .ToList();
             DataContext = this;
-            NextRound();
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1); // Az időzítési időköz beállítása (1 másodperc)
+            timer.Tick += Timer_Tick;
+            Ant_Percentage = ant_Percentage;
+        }
+        private void MenuClick(object sender, RoutedEventArgs e) {
+            Button button = (Button)sender;
+            if (button != null) {
+                // Get the HexItem from the button's Tag attribute
+                IntPoint intPoint = (IntPoint)button.Tag;
+
+                // Open the color selection window
+                var colorSelectionWindow = new HexTypeSelectionWindow();
+                if (colorSelectionWindow.ShowDialog() == true) {
+                    // User selected a color
+                    string selectedColor = colorSelectionWindow.SelectedColor;
+
+                    // Change the hex color
+                    Gameboard.ChangeHexColor(intPoint.X, intPoint.Y, selectedColor, intPoint.Ant != "");
+                    Board.ItemsSource = Gameboard.HexList
+                        .SelectMany(rowList => rowList)
+                        .Select(hex => hex.Point)
+                        .ToList();
+                    // Update the HexList
+
+                }
+            }
+        }
+        private void SaveToDb() {
+            List<List<IntPoint>> HexDTOList = new List<List<IntPoint>>();
+            foreach (var row in Gameboard.HexList) {
+                List<IntPoint> rowHexes = new List<IntPoint>();
+                foreach (var hex in row) {
+                    rowHexes.Add(new IntPoint(hex.Point.X, hex.Point.Y, hex.Point.Color, hex.Point.Ant != ""));
+                }
+                HexDTOList.Add(rowHexes);
+            }
+            var BoardDTO = new BoardDTO(Row, Column, HexDTOList);
+            var simulationRound = new Simulation() { GameId = GameId, Board = BoardDTO, Round = Round };
+            mainWindow.InsertRound(simulationRound);
         }
 
-        public void NextRound() {
-            var simulationRound = new Simulation() { Board = Gameboard, Round = Round };
-            mainWindow.InsertRound(simulationRound);
+
+        private void play_Click(object sender, RoutedEventArgs e) {
+            timer.Start();
+        }
+
+        private void stop_Click(object sender, RoutedEventArgs e) {
+            timer.Stop();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e) {
+            SaveToDb();
+            Round++;
+            // Az eredeti kódot ide helyezzük be, amit 1 másodpercenként szeretnénk futtatni
+            Gameboard.ChangeHex();
+            Board.ItemsSource = Gameboard.HexList
+                .SelectMany(rowList => rowList)
+                .Select(hex => hex.Point)
+                .ToList();
+            Trace.WriteLine("tick");
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
     }
