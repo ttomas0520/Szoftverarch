@@ -1,6 +1,7 @@
-﻿using HexGridControl;
-using HexGridHelpers;
+﻿using HexGridHelpers;
+using Repositories;
 using SwarmWPF.Logic;
+using SwarmWPF.Models.DatabaseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,20 +22,24 @@ namespace SwarmWPF {
     /// Interaction logic for GamePage.xaml
     /// </summary>
     public partial class GamePage : Page {
+        private readonly MainWindow mainWindow;
         public int Row { get; set; }
         public int Column { get; set; }
-        public Board board { get; set; }
-        public GamePage(int row, int column) {
+        public int Round { get; set; }
+        public Board Gameboard { get; set; }
+        public GamePage(MainWindow mainWindow, int row, int column) {
+            this.mainWindow = mainWindow;
             Row = row;
             Column = column;
-            board = new Board(row, column);
+            Gameboard = new Board(row, column);
+            Round = 1;
             InitializeComponent();
-            Board.ItemsSource =
-                   Enumerable.Range(0, row)
-                       .SelectMany(r => Enumerable.Range(0, column)
-                           .Select(c => new IntPoint(c, r)))
-                       .ToList();
+            Board.ItemsSource = Gameboard.HexList
+                .SelectMany(rowList => rowList)
+                .Select(hex => hex.Point)
+                .ToList();
             DataContext = this;
+            NextRound();
         }
         private void MenuClick(object sender, RoutedEventArgs e)
         {
@@ -47,6 +52,15 @@ namespace SwarmWPF {
                 MessageBox.Show(intPoint.X.ToString(), "HexMenu", MessageBoxButton.OK, MessageBoxImage.Exclamation);             
             }
             
+
+        public void NextRound() {
+            var simulationRound = new Simulation() { Board = Gameboard, Round = Round };
+            mainWindow.InsertRound(simulationRound);
+        }
+
+
+        private void play_Click(object sender, RoutedEventArgs e) {
+            Gameboard.ChangeHex();
         }
     }
 }

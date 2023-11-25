@@ -23,7 +23,13 @@ namespace HexGridHelpers {
         }
         public string Ant {
             get { return _ant; }
+            set { _ant = value; }
         }
+
+        public void SetAnt(string ant) {
+            _ant = ant;
+        }
+
 
         public static bool operator ==(IntPoint a, IntPoint b) {
             return a.X == b.X && a.Y == b.Y;

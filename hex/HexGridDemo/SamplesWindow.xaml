@@ -11,16 +11,16 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"/>
         </Style>
-        
+
         <BooleanToVisibilityConverter x:Key="Btw"/>
     </Window.Resources>
-    
+
     <TabControl>
         <TabItem Header="Hex">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>                    
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
                 <hx:HexItem Grid.Column="0" Orientation="Vertical" Margin="20"
@@ -29,7 +29,7 @@
                 <hx:HexItem Grid.Column="1" Orientation="Horizontal" Margin="20"
                             Content="{Binding Path=Orientation, RelativeSource={RelativeSource Self}}"
                             Height="{Binding Path=ActualWidth, RelativeSource={RelativeSource Self}}"/>
-            </Grid>                        
+            </Grid>
         </TabItem>
 
         <TabItem Header="HexBoard">
@@ -39,7 +39,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
+
                 <ListBox Name="BoardOrientation" SelectedIndex="0">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -68,20 +68,20 @@
                             <TextBlock>                                
                                 <Run Text="{Binding Path=Y, Mode=OneWay}"/>
                                 <Run Text=","/>
-                                <Run Text="{Binding Path=X, Mode=OneWay}"/>                                
+                                <Run Text="{Binding Path=X, Mode=OneWay}"/>
                             </TextBlock>
                         </DataTemplate>
                     </hx:HexList.ItemTemplate>
 
                 </hx:HexList>
-            </Grid>           
+            </Grid>
         </TabItem>
-        
+
         <TabItem Header="Vertical&#10;Arrange">
             <TabItem.Resources>
                 <Style TargetType="{x:Type hx:HexItem}">
                     <Setter Property="BorderThickness" Value="1.5"/>
-                    <Setter Property="Padding" Value="20"/>                    
+                    <Setter Property="Padding" Value="20"/>
                     <Setter Property="Background" Value="White"/>
                     <Setter Property="BorderBrush" Value="Black"/>
                 </Style>
@@ -91,7 +91,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
+
                 <Grid Margin="10,5">
                     <CheckBox Name="ChkFirstColumn" Content="Visible First" IsChecked="True"/>
                     <CheckBox Name="ChkLastColumn"  Content="Visible Last " IsChecked="True" HorizontalAlignment="Right"/>
@@ -164,7 +164,7 @@
                         <hx:HexItem Background="Wheat" Grid.Row="0" Grid.Column="1" />
 
                         <hx:HexItem Background="Wheat" Grid.Row="1" Grid.Column="0" />
-                        
+
                         <hx:HexItem Name="HxLast" Grid.Row="1" Grid.Column="1"
                                     HorizontalContentAlignment="Right"                                    
                                     Visibility="{Binding Path=IsChecked, ElementName=ChkLastColumn, Converter={StaticResource Btw}}">
@@ -195,9 +195,9 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Column="1" Margin="10,5">
-                <CheckBox Name="ChkFirstRow" Content="Visible First" IsChecked="True"/>
-                <CheckBox Name="ChkLastRow"  Content="Visible Last " IsChecked="True" HorizontalAlignment="Right"/>
-            </Grid>
+                    <CheckBox Name="ChkFirstRow" Content="Visible First" IsChecked="True"/>
+                    <CheckBox Name="ChkLastRow"  Content="Visible Last " IsChecked="True" HorizontalAlignment="Right"/>
+                </Grid>
 
                 <!--grid lines for HexGrid-->
                 <Grid Grid.Row="1" Grid.Column="1" Margin="5">
@@ -206,7 +206,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>                        
+                        <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -290,7 +290,7 @@
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
                 </Style>
             </TabItem.Resources>
-            
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -301,11 +301,11 @@
                              Background="DarkBlue"
                              RowCount="3" ColumnCount="3" Orientation="Horizontal">
                     <hx:HexItem Grid.Row="0" Grid.Column="1" Content="{x:Static vm:HexDirection.Up}"/>
-                
+
                     <hx:HexItem Grid.Row="1" Grid.Column="0" Content="{x:Static vm:HexDirection.UpLeft}"/>
                     <hx:HexItem Grid.Row="1" Grid.Column="1" Content="{Binding Path=Orientation, RelativeSource={RelativeSource Self}}" Background="Gold"/>
                     <hx:HexItem Grid.Row="1" Grid.Column="2" Content="{x:Static vm:HexDirection.UpRight}"/>
-                                
+
                     <hx:HexItem Grid.Row="2" Grid.Column="0" Content="{x:Static vm:HexDirection.DownLeft}"/>
                     <hx:HexItem Grid.Row="2" Grid.Column="1" Content="{x:Static vm:HexDirection.Down}"/>
                     <hx:HexItem Grid.Row="2" Grid.Column="2" Content="{x:Static vm:HexDirection.DownRight}"/>
@@ -328,7 +328,7 @@
 
             </Grid>
         </TabItem>
-        
+
         <TabItem Header="Circles">
             <TabItem.Resources>
                 <Style TargetType="Ellipse">
@@ -427,16 +427,16 @@
                 </hx:HexList>
             </Grid>
         </TabItem>
-        
+
         <TabItem Header="Hex Menu">
             <TabItem.Resources>
                 <Style TargetType="{x:Type hx:HexItem}">
                     <Setter Property="Margin" Value="8"/>
                     <Setter Property="MinHeight" Value="80"/>
                     <Setter Property="MinWidth"  Value="80"/>
-                    <Setter Property="BorderThickness" Value="0"/>                    
-                    <Setter Property="FontSize" Value="20"/>                    
-                    <Setter Property="Background" Value="White"/>                    
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Background" Value="White"/>
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="VerticalContentAlignment" Value="Stretch"/>
                     <Setter Property="ContentTemplate">
@@ -447,7 +447,7 @@
                                         Click="MenuClick"/>
                             </DataTemplate>
                         </Setter.Value>
-                    </Setter>                    
+                    </Setter>
                 </Style>
             </TabItem.Resources>
 
@@ -462,22 +462,22 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
+
                 <hx:HexGrid Grid.Row="1" Grid.Column="1"
                             RowCount="3" ColumnCount="3" Orientation="Horizontal">
-                <hx:HexItem Grid.Row="0" Grid.Column="1" Content="123"/>
+                    <hx:HexItem Grid.Row="0" Grid.Column="1" Content="2"/>
 
-                <hx:HexItem Grid.Row="1" Grid.Column="0" Content="1"/>
-                <hx:HexItem Grid.Row="1" Grid.Column="1" Content="0" Background="Gold"/>
-                <hx:HexItem Grid.Row="1" Grid.Column="2" Content="3"/>
+                    <hx:HexItem Grid.Row="1" Grid.Column="0" Content="1"/>
+                    <hx:HexItem Grid.Row="1" Grid.Column="1" Content="0" Background="Gold"/>
+                    <hx:HexItem Grid.Row="1" Grid.Column="2" Content="3"/>
 
-                <hx:HexItem Grid.Row="2" Grid.Column="0" Content="6"/>
-                <hx:HexItem Grid.Row="2" Grid.Column="1" Content="5"/>
-                <hx:HexItem Grid.Row="2" Grid.Column="2" Content="4"/>
-            </hx:HexGrid>
+                    <hx:HexItem Grid.Row="2" Grid.Column="0" Content="6"/>
+                    <hx:HexItem Grid.Row="2" Grid.Column="1" Content="5"/>
+                    <hx:HexItem Grid.Row="2" Grid.Column="2" Content="4"/>
+                </hx:HexGrid>
 
             </Grid>
         </TabItem>
-                
+
     </TabControl>
 </Window>
