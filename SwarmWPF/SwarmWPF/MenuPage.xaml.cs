@@ -44,8 +44,6 @@ namespace SwarmWPF {
 
         private void OnLoadGameClicked(object sender, RoutedEventArgs e) {
             mainWindow.LoadGame(GameId.Text);
-            IDictionary<int, Simulation> loadedGame = new Dictionary<int, Simulation>();
-
         }
 
         private void OnExitGameClicked(object sender, RoutedEventArgs e) {

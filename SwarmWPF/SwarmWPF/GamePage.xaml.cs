@@ -20,28 +20,29 @@ using System.Windows.Threading;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using MongoDB.Bson;
 
 namespace SwarmWPF {
     /// <summary>
     /// Interaction logic for GamePage.xaml
     /// </summary>
-    public partial class GamePage : Page, INotifyPropertyChanged
-    {
+    public partial class GamePage : Page, INotifyPropertyChanged {
         private int _round;
 
         private readonly MainWindow mainWindow;
+        private readonly ObjectId GameId;
         public int Row { get; set; }
         public int Column { get; set; }
         public int Round { get { return _round; } set { _round = value; OnPropertyChanged(); } }
-        public int Ant_Percentage {  get; set; }
+        public int Ant_Percentage { get; set; }
         public Board Gameboard { get; set; }
         private DispatcherTimer timer;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public GamePage(MainWindow mainWindow, int row, int column, int ant_Percentage)
-        {
+        public GamePage(MainWindow mainWindow, int row, int column, int ant_Percentage) {
             this.mainWindow = mainWindow;
+            GameId = ObjectId.GenerateNewId();
             Row = row;
             Column = column;
             Gameboard = new Board(row, column, ant_Percentage);
@@ -55,7 +56,6 @@ namespace SwarmWPF {
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1); // Az időzítési időköz beállítása (1 másodperc)
             timer.Tick += Timer_Tick;
-            NextRound();
             Ant_Percentage = ant_Percentage;
         }
         private void HexTypeChanger(object sender, RoutedEventArgs e) {
@@ -91,8 +91,17 @@ namespace SwarmWPF {
                 }
             }
         }
-        public void NextRound() {
-            var simulationRound = new Simulation() { Board = Gameboard, Round = Round };
+        private void SaveToDb() {
+            List<List<IntPoint>> HexDTOList = new List<List<IntPoint>>();
+            foreach (var row in Gameboard.HexList) {
+                List<IntPoint> rowHexes = new List<IntPoint>();
+                foreach (var hex in row) {
+                    rowHexes.Add(new IntPoint(hex.Point.X, hex.Point.Y, hex.Point.Color, hex.Point.Ant != ""));
+                }
+                HexDTOList.Add(rowHexes);
+            }
+            var BoardDTO = new BoardDTO(Row, Column, HexDTOList);
+            var simulationRound = new Simulation() { GameId = GameId, Board = BoardDTO, Round = Round };
             mainWindow.InsertRound(simulationRound);
         }
 
@@ -101,13 +110,12 @@ namespace SwarmWPF {
             timer.Start();
         }
 
-        private void stop_Click(object sender, RoutedEventArgs e)
-        {           
+        private void stop_Click(object sender, RoutedEventArgs e) {
             timer.Stop();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
+        private void Timer_Tick(object sender, EventArgs e) {
+            SaveToDb();
             Round++;
             // Az eredeti kódot ide helyezzük be, amit 1 másodpercenként szeretnénk futtatni
             Gameboard.CalculateNextRound();
@@ -118,8 +126,7 @@ namespace SwarmWPF {
             Trace.WriteLine("tick");
         }
 
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
+        protected void OnPropertyChanged([CallerMemberName] string name = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 

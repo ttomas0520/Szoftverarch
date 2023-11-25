@@ -8,11 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\back.png" />
     <None Remove="Resources\Images\play_circle.png" />
     <None Remove="Resources\Images\settings.png" />
     <None Remove="Resources\Images\step.png" />
     <None Remove="Resources\Images\stop_circle.png" />
     <None Remove="Resources\Images\SWARM.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
