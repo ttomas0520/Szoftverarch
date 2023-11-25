@@ -7,17 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SwarmWPF.Logic {
-    public class Hex : INotifyPropertyChanged {
+    public class Hex {
         private IntPoint _point;
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public IntPoint Point {
             get { return _point; }
             set {
                 if (_point != value) {
                     _point = value;
-                    OnPropertyChanged(nameof(Point));
+
+
                 }
             }
         }
@@ -34,10 +34,11 @@ namespace SwarmWPF.Logic {
             if (!HasAnt) return;
         }
         public void ChangeFirstNeighbor() {
-            Neighbours.First().Point.Ant = "asd";
+            var firstNeighbor = Neighbours.First();
+            var point = firstNeighbor.Point;
+            point.Ant = "asd";
+            Neighbours.First().Point = point;
         }
-        protected virtual void OnPropertyChanged(string propertyName) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+       
     }
 }

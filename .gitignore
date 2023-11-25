@@ -14,8 +14,8 @@
 x64/
 build/
 bld/
-[Bb]in/
-[Oo]bj/
+[Bb]in/ 
+[Oo]bj/ 
 
 # Roslyn cache directories
 *.ide/
@@ -192,6 +192,8 @@ bin
 obj
 hex\HexGridControl\obj
 hex\HexGridControl\bin
-SwarmWPF\bin
-SwarmWPF\obj
-SwarmWPF\.vs
+SwarmWPF/SwarmWPF/bin
+SwarmWPF/SwarmWPF/obj
+SwarmWPF/SwarmWPF/.vs
+SwarmWPF/SwarmWPF/bin/Debug/net7.0-windows/HexGridControl.dll
+SwarmWPF/.vs

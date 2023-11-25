@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SwarmWPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d845c23a28a952d3107bd8fe11edb2c973fa83e5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6612ab0b3c61db494b93e8514049aa92d7151aed")]
 [assembly: System.Reflection.AssemblyProductAttribute("SwarmWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SwarmWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
