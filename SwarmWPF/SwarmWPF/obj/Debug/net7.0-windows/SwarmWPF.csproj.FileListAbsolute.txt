@@ -113,3 +113,5 @@ D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\LoadedGamePage
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\LoadedGamePage.baml
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelectionWindow.baml
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelectionWindow.g.cs
+D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelectionWindow.baml
+D:\Egyetem\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelectionWindow.g.cs

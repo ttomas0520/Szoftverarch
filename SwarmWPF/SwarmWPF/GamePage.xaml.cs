@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace SwarmWPF {
     /// <summary>
@@ -27,6 +29,7 @@ namespace SwarmWPF {
         public int Column { get; set; }
         public int Round { get; set; }
         public Board Gameboard { get; set; }
+        private DispatcherTimer timer;
         public GamePage(MainWindow mainWindow, int row, int column) {
             this.mainWindow = mainWindow;
             Row = row;
@@ -39,6 +42,9 @@ namespace SwarmWPF {
                 .Select(hex => hex.Point)
                 .ToList();
             DataContext = this;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1); // Az időzítési időköz beállítása (1 másodperc)
+            timer.Tick += Timer_Tick;
             NextRound();
         }
         private void MenuClick(object sender, RoutedEventArgs e) {
@@ -71,11 +77,24 @@ namespace SwarmWPF {
 
 
         private void play_Click(object sender, RoutedEventArgs e) {
+            timer.Start();
+        }
+
+        private void stop_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Az eredeti kódot ide helyezzük be, amit 1 másodpercenként szeretnénk futtatni
             Gameboard.ChangeHex();
             Board.ItemsSource = Gameboard.HexList
                 .SelectMany(rowList => rowList)
                 .Select(hex => hex.Point)
                 .ToList();
+            Trace.WriteLine("tick");
         }
+
     }
 }
