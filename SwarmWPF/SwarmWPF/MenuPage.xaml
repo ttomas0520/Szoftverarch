@@ -27,7 +27,7 @@
                         x:Name="BoardHeight"
                         PreviewTextInput="NumberValidationTextBox"
                         KeyboardNavigation.TabNavigation="Cycle"
-                        Text="10"
+                        Text="2"
                         MaxLength="3" 
                         MaxWidth="100"
                         HorizontalAlignment="Stretch"/>
@@ -43,7 +43,7 @@
                         x:Name="BoardWidth"
                         PreviewTextInput="NumberValidationTextBox"
                         KeyboardNavigation.TabNavigation="Cycle"
-                        Text="10"
+                        Text="2"
                         MaxLength="3" 
                         MaxWidth="100"
                         HorizontalAlignment="Stretch"/>
@@ -58,7 +58,7 @@
                      x:Name="Ant_number"
                      PreviewTextInput="NumberValidationTextBox"
                      KeyboardNavigation.TabNavigation="Cycle"
-                     Text="10"
+                     Text="50"
                      MaxLength="2" 
                      MaxWidth="100"
                      HorizontalAlignment="Stretch"/>    

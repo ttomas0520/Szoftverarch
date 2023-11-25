@@ -19,16 +19,13 @@ namespace SwarmWPF.Logic
 
             if (neighbours_hasAnt.Count == 0)
             {
+                Stay();
                 return;
             }
             var neighbours_notReserved = Neighbours.FindAll(x => x.ReservedBy == null && x.Point.Ant!="X").ToList();
 
-            if (neighbours_notReserved.Count == 0) { 
-                if(this.ReservedBy != null)
-                {
-                    this.ReservedBy.ReserveNext();
-                }
-                this.ReservedBy = this; 
+            if (neighbours_notReserved.Count == 0) {
+                Stay();
                 return; 
             }
 

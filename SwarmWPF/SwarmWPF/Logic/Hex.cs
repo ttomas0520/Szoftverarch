@@ -14,9 +14,8 @@ namespace SwarmWPF.Logic {
         public IntPoint Point {
             get { return _point; }
             set {
-                if (_point != value) {
+
                     _point = value;
-                }
             }
         }
         public Hex? ReservedBy { get; set; }
@@ -28,22 +27,34 @@ namespace SwarmWPF.Logic {
         }
 
         public virtual void ReserveNext() {
-            return;
+            if (this.Point.Ant == "X")
+            {
+                if (this.ReservedBy != null)
+                {
+                    this.ReservedBy.ReserveNext();
+                }
+                this.ReservedBy = this;
+                
+            }                          
         }
 
-
+        public void Stay()
+        {
+            if (this.ReservedBy != null)
+            {
+                this.ReservedBy.ReserveNext();
+            }
+            this.ReservedBy = this;
+        }
 
         public void StepNext() {
-            if (ReservedBy != null) {
-                var point = new IntPoint(Point.X, Point.Y, Point.Color, true);
-                this.Point = point;
+            if (ReservedBy != null) {           
+                _point.SetAnt(true);
                 this.ReservedBy = null;
             }
             else {
-                var point = new IntPoint(Point.X, Point.Y, Point.Color, false);
-                this.Point = point;
+                _point.SetAnt(false);
             }
-
         }
     }
 }

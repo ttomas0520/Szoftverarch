@@ -74,6 +74,7 @@ namespace SwarmWPF {
                         case "AntiAntHex": {
                                 var newAntiAntHex = new AntiAntHex(intPoint.X,intPoint.Y,"",intPoint.Ant=="X");
                                 newAntiAntHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
+                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newAntiAntHex);
                                 Gameboard.HexList[intPoint.X][intPoint.Y] = newAntiAntHex;
 
                                 break; }
@@ -91,6 +92,13 @@ namespace SwarmWPF {
                 }
             }
         }
+        private void ChangeNeighbours(Hex oldH, Hex newH){
+            foreach( var i in oldH.Neighbours)
+                {      
+                   i.Neighbours[i.Neighbours.IndexOf(oldH)] = newH;     
+                }
+        }
+
         private void SaveToDb() {
             List<List<IntPoint>> HexDTOList = new List<List<IntPoint>>();
             foreach (var row in Gameboard.HexList) {
