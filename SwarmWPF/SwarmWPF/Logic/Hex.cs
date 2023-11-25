@@ -28,23 +28,22 @@ namespace SwarmWPF.Logic {
         }
 
         public virtual void ReserveNext() {
-             return;
+            return;
         }
 
 
 
-        public void StepNext()
-        {
-            if (ReservedBy != null)
-            {
-                this.Point.SetAnt(true);
+        public void StepNext() {
+            if (ReservedBy != null) {
+                var point = new IntPoint(Point.X, Point.Y, Point.Color, true);
+                this.Point = point;
                 this.ReservedBy = null;
             }
-            else
-            {
-                this.Point.SetAnt(false);
+            else {
+                var point = new IntPoint(Point.X, Point.Y, Point.Color, false);
+                this.Point = point;
             }
-            
+
         }
     }
 }
