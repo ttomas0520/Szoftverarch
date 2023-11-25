@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\App.xaml
-4-2036507618
+5-1678354440
 51510120514
-141530981323
+15-1834148429
 214495362206
-GamePage.xaml;LoadedGamePage.xaml;MainWindow.xaml;MenuPage.xaml;
+GamePage.xaml;HexTypeSelectionWindow.xaml;LoadedGamePage.xaml;MainWindow.xaml;MenuPage.xaml;
 
-True
+False
 

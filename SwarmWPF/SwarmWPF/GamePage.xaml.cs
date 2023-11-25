@@ -44,18 +44,25 @@ namespace SwarmWPF {
         private void MenuClick(object sender, RoutedEventArgs e) {
             Button button = (Button)sender;
             if (button != null) {
-                // Az OriginalSource-on keresztül hozzáférünk a gomb Tag attribútumához rendelt HexItem objektumhoz
+                // Get the HexItem from the button's Tag attribute
                 IntPoint intPoint = (IntPoint)button.Tag;
-                Gameboard.ChangeHexColor(intPoint.X, intPoint.Y, "Blue");
-                MessageBox.Show(intPoint.X.ToString(), "HexMenu", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                Board.ItemsSource = Gameboard.HexList
-                .SelectMany(rowList => rowList)
-                .Select(hex => hex.Point)
-                .ToList();
+
+                // Open the color selection window
+                var colorSelectionWindow = new HexTypeSelectionWindow();
+                if (colorSelectionWindow.ShowDialog() == true) {
+                    // User selected a color
+                    string selectedColor = colorSelectionWindow.SelectedColor;
+
+                    // Change the hex color
+                    Gameboard.ChangeHexColor(intPoint.X, intPoint.Y, selectedColor);
+
+                    // Update the HexList
+                    Board.ItemsSource = Gameboard.HexList
+                        .SelectMany(rowList => rowList)
+                        .Select(hex => hex.Point)
+                        .ToList();
+                }
             }
-
-
-
         }
         public void NextRound() {
             var simulationRound = new Simulation() { Board = Gameboard, Round = Round };

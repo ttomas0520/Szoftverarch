@@ -111,3 +111,5 @@ D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\bin\Debug\net7.0-windows\runtimes\osx\n
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\bin\Debug\net7.0-windows\runtimes\win\native\mongocrypt.dll
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\LoadedGamePage.g.cs
 D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\LoadedGamePage.baml
+D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelectionWindow.baml
+D:\GITHUB\Szoftverarch\SwarmWPF\SwarmWPF\obj\Debug\net7.0-windows\HexTypeSelectionWindow.g.cs
