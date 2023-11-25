@@ -2,6 +2,7 @@
 *.vsidx
 
 /.vs
+**/.vs
 **/obj
 *.obj
 
