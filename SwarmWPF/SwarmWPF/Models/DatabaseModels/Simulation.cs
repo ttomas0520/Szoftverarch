@@ -1,6 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using SwarmWPF.Logic;
+using SwarmWPF.ViewModel;
 
 namespace SwarmWPF.Models.DatabaseModels {
     public class Simulation {

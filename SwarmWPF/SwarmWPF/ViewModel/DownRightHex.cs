@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwarmWPF.Logic {
+namespace SwarmWPF.ViewModel {
     class DownRightHex : Hex {
         public DownRightHex(int row, int column, bool isAnt) : base(row, column, "SeaShell", isAnt) {
         }

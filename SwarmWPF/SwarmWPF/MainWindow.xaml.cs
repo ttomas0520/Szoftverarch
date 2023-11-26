@@ -8,7 +8,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using Repositories;
 using Swarm.Repositories;
-using SwarmWPF.Logic;
+using SwarmWPF.ViewModel;
 using SwarmWPF.Models.DatabaseModels;
 
 namespace SwarmWPF {

@@ -1,5 +1,5 @@
 ﻿using HexGridHelpers;
-using SwarmWPF.Logic;
+using SwarmWPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

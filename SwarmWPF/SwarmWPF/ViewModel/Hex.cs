@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwarmWPF.Logic {
+namespace SwarmWPF.ViewModel {
     public class Hex {
         private IntPoint _point;
 

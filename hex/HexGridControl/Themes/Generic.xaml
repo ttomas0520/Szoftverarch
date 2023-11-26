@@ -45,11 +45,7 @@
                                               ContentTemplate="{TemplateBinding ContentTemplate}"/>
                         </Grid>
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="BorderBrush" Value="Gold"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
+                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

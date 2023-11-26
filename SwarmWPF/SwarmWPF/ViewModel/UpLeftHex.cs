@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwarmWPF.Logic {
-    class DownHex : Hex {
-        public DownHex(int row, int column, bool isAnt) : base(row, column, "PaleTurquoise", isAnt) {
+namespace SwarmWPF.ViewModel {
+    class UpLeftHex : Hex {
+        public UpLeftHex(int row, int column, bool isAnt) : base(row, column, "HotPink", isAnt) {
         }
 
         public override void ReserveNext() {
             if (this.Point.Ant != "X") return;
-            var upNeighbour = Neighbours.FirstOrDefault(x => x.Point.X == this.Point.X + 1);
+            var searchedY = this.Point.Y - 1;
+            var searchedX = this.Point.X;
+            if (Point.Y % 2 == 0) { searchedX--; }
+            var upNeighbour = Neighbours.FirstOrDefault(x => x.Point.X == searchedX && x.Point.Y == searchedY);
 
             if (upNeighbour == null || upNeighbour.ReservedBy != null) {
                 Stay();

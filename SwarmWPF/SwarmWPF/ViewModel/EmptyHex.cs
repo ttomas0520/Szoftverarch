@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwarmWPF.Logic {
+namespace SwarmWPF.ViewModel {
     class EmptyHex : Hex {
         public EmptyHex(int row, int column, bool isAnt) : base(row, column, "Gainsboro", isAnt) {
 

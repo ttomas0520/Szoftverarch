@@ -1,6 +1,6 @@
 ﻿using HexGridHelpers;
 using Repositories;
-using SwarmWPF.Logic;
+using SwarmWPF.ViewModel;
 using SwarmWPF.Models.DatabaseModels;
 using System;
 using System.Collections.Generic;
@@ -21,6 +21,7 @@ using System.Diagnostics;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using MongoDB.Bson;
+using HexGridControl;
 
 namespace SwarmWPF {
     /// <summary>
@@ -28,6 +29,7 @@ namespace SwarmWPF {
     /// </summary>
     public partial class GamePage : Page, INotifyPropertyChanged {
         private int _round;
+        private Hex _selectedHex;
 
         private readonly MainWindow mainWindow;
         private readonly ObjectId GameId;
@@ -36,6 +38,18 @@ namespace SwarmWPF {
         public int Round { get { return _round; } set { _round = value; OnPropertyChanged(); } }
         public int Ant_Percentage { get; set; }
         public Board Gameboard { get; set; }
+        public Hex SelectedHex { 
+            get {
+                return _selectedHex;
+            }
+            set {
+                if(_selectedHex != value)
+        {
+                    _selectedHex = value; OnPropertyChanged("SelectedCustomer");
+                }
+                Trace.WriteLine("Selected");
+            } 
+        }
         private DispatcherTimer timer;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -69,69 +83,7 @@ namespace SwarmWPF {
                 if (colorSelectionWindow.ShowDialog() == true) {
                     // User selected a color
                     string selectedHexType = colorSelectionWindow.SelectedType;
-                    switch (selectedHexType) {
-                        case "AntiAntHex": {
-                                var newAntiAntHex = new AntiAntHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
-                                newAntiAntHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
-                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newAntiAntHex);
-                                Gameboard.HexList[intPoint.X][intPoint.Y] = newAntiAntHex;
-
-                                break;
-                            }
-                        case "EmptyHex": {
-                                var newEmptyHex = new EmptyHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
-                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
-                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
-                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
-                                break;
-                            }
-                        case "UpHex": {
-                                var newEmptyHex = new UpHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
-                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
-                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
-                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
-                                break;
-                            }
-                        case "DownHex": {
-                                var newEmptyHex = new DownHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
-                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
-                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
-                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
-                                break;
-                            }
-                        case "UpRightHex": {
-                                var newEmptyHex = new UpRightHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
-                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
-                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
-                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
-                                break;
-                            }
-                        case "DownRightHex": {
-                                var newEmptyHex = new DownRightHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
-                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
-                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
-                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
-                                break;
-                            }
-                        case "DownLeftHex": {
-                                var newEmptyHex = new DownLeftHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
-                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
-                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
-                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
-                                break;
-                            }
-                        case "UpLeftHex": {
-                                var newEmptyHex = new UpLeftHex(intPoint.X, intPoint.Y, intPoint.Ant == "X");
-                                newEmptyHex.Neighbours = Gameboard.HexList[intPoint.X][intPoint.Y].Neighbours;
-                                ChangeNeighbours(Gameboard.HexList[intPoint.X][intPoint.Y], newEmptyHex);
-                                Gameboard.HexList[intPoint.X][intPoint.Y] = newEmptyHex;
-                                break;
-                            }
-                        default: break;
-                    }
-
-                    // Change the hex color
-                    //Gameboard.ChangeHexColor(intPoint.X, intPoint.Y, selectedColor, intPoint.Ant != null);
+                    Gameboard.SwitchToNewHex(selectedHexType, intPoint);
 
                     // Update the HexList
                     Board.ItemsSource = Gameboard.HexList
@@ -141,11 +93,7 @@ namespace SwarmWPF {
                 }
             }
         }
-        private void ChangeNeighbours(Hex oldH, Hex newH) {
-            foreach (var i in oldH.Neighbours) {
-                if (i != null) i.Neighbours[i.Neighbours.IndexOf(oldH)] = newH;
-            }
-        }
+
 
         private void SaveToDb() {
             List<List<IntPoint>> HexDTOList = new List<List<IntPoint>>();

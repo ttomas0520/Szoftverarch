@@ -1,4 +1,4 @@
-﻿using SwarmWPF.Logic;
+﻿using SwarmWPF.ViewModel;
 using SwarmWPF.Models.DatabaseModels;
 using System;
 using System.Collections.Generic;
