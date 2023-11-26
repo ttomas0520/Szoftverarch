@@ -33,22 +33,22 @@ namespace SwarmWPF {
 
         private readonly MainWindow mainWindow;
         private readonly ObjectId GameId;
+        public string GameIdString { get; set; }
         public int Row { get; set; }
         public int Column { get; set; }
         public int Round { get { return _round; } set { _round = value; OnPropertyChanged(); } }
         public int Ant_Percentage { get; set; }
         public Board Gameboard { get; set; }
-        public Hex SelectedHex { 
+        public Hex SelectedHex {
             get {
                 return _selectedHex;
             }
             set {
-                if(_selectedHex != value)
-        {
+                if (_selectedHex != value) {
                     _selectedHex = value; OnPropertyChanged("SelectedCustomer");
                 }
                 Trace.WriteLine("Selected");
-            } 
+            }
         }
         private DispatcherTimer timer;
 
@@ -57,6 +57,7 @@ namespace SwarmWPF {
         public GamePage(MainWindow mainWindow, int row, int column, int ant_Percentage) {
             this.mainWindow = mainWindow;
             GameId = ObjectId.GenerateNewId();
+            GameIdString = GameId.ToString();
             Row = row;
             Column = column;
             Gameboard = new Board(row, column, ant_Percentage);

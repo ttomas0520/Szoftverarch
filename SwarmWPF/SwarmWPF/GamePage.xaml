@@ -28,6 +28,14 @@
                 <Run Text="Round: "/>
                 <Run Text="{Binding Path=Round}"/>
             </TextBlock>
+            <TextBlock>
+                <Run Text="  GameId: "/>
+            </TextBlock>
+            <TextBox Background="Transparent"
+             BorderThickness="0"
+             Text="{Binding GameIdString, Mode=OneWay}"
+             IsReadOnly="True"
+             TextWrapping="Wrap" />
         </StackPanel>
 
         <hx:HexList Grid.Row="1" Name="Board" 
