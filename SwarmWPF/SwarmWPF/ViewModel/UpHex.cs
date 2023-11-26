@@ -11,7 +11,7 @@ namespace SwarmWPF.ViewModel {
 
         public override void ReserveNext() {
             if (this.Point.Ant != "X") return;
-            var upNeighbour = Neighbours.FirstOrDefault(x => x.Point.X == this.Point.X - 1);
+            var upNeighbour = Neighbours.FirstOrDefault(x => x.Point.X == this.Point.X - 1 && x.Point.Y == this.Point.Y);
 
             if (upNeighbour == null || upNeighbour.ReservedBy != null) {
                 Stay();

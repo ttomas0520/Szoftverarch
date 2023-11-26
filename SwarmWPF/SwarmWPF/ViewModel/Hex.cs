@@ -20,7 +20,6 @@ namespace SwarmWPF.ViewModel {
         }
         public Hex? ReservedBy { get; set; }
         public List<Hex> Neighbours { get; set; }
-        public int Priority { get; set; }
 
         public Hex(int row, int column, string color, bool isAnt) {
             Point = new IntPoint(row, column, color, isAnt);
