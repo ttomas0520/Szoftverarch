@@ -52,11 +52,6 @@
                     <StackPanel>
                         <TextBlock >                                
              <Run Text="{Binding Path=Ant, Mode=OneWay}"/>
-             <Run Text="("/>
-             <Run Text="{Binding Path=X, Mode=OneWay}"/>
-             <Run Text=";"/>
-             <Run Text="{Binding Path=Y, Mode=OneWay}"/>
-             <Run Text=")"/>
                         </TextBlock>
                     </StackPanel>
 
